@@ -25,10 +25,11 @@ featured: true
 order: 3
 ---
 
-A Wagtail-powered Christian blog that I architected and still maintain with a two-person team.
+A Wagtail-powered Christian blog that I contributed to and continue to maintain as part of a two-person team.
 
-## What I built
+## What I contributed
 
-- **Custom Wagtail page models** so the writers publish and organise posts themselves.
-- **PostgreSQL and structured logging**, so problems show up in the logs before readers notice them.
-- **A Docker setup** deployed and monitored on DigitalOcean.
+- **Page and UI design for several sections of the blog, helping shape the overall layout and user experience.
+- **Custom Wagtail page models that allow writers to publish and organise posts independently.
+- **PostgreSQL and structured logging to help monitor the application and identify issues early.
+- **Docker-based deployment hosted and monitored on DigitalOcean.
