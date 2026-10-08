@@ -1,7 +1,7 @@
 ---
 title: Scriptures and Power
 tagline: A Christian blog web application
-role: Architect & maintainer
+role: contributor 
 year: 2024
 url: https://scripturesandpower.com
 image: cover.png
