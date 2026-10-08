@@ -1,0 +1,8 @@
+---
+// A Font Awesome icon as plain SVG, rendered when the site builds (no JavaScript sent to visitors).
+import { icon } from '@fortawesome/fontawesome-svg-core';
+
+const { icon: definition, class: className } = Astro.props;
+const svg = icon(definition, { classes: className ? className.split(' ') : [] }).html.join('');
+---
+<Fragment set:html={svg} />

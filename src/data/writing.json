@@ -1,0 +1,10 @@
+{
+  "profile": "https://medium.com/@CraigryJames",
+  "articles": [
+    { "title": "Flask vs Django: choosing the right framework", "url": "https://medium.com/@CraigryJames/flask-vs-django-choosing-the-right-framework-d833174ec25a", "date": "2024-11-25", "outlet": "Medium" },
+    { "title": "Crafting Harmony: building a full-stack web application with Flask and React", "url": "https://medium.com/@CraigryJames/crafting-harmony-building-a-full-stack-web-application-with-flask-and-react-deploying-to-heroku-4ff2599b94d5", "date": "2023-11-13", "outlet": "Medium" },
+    { "title": "Comparing MongoDB, SQLite and Postgres: choosing the right database", "url": "https://medium.com/@CraigryJames/comparing-mongodb-sqlite-and-postgres-choosing-the-right-database-for-your-needs-73d08cc719b4", "date": "2023-08-28", "outlet": "Medium" },
+    { "title": "My journey with “Assemble”: the power of organisation and learning", "url": "https://medium.com/@CraigryJames/my-journey-with-assemble-unveiling-the-power-of-organization-and-learning-1c0f6418d99d", "date": "2023-08-26", "outlet": "Medium" },
+    { "title": "Beginner’s guide to Poetry on Windows", "url": "https://medium.com/@CraigryJames/beginners-guide-to-using-poetry-on-windows-b72d9613cbe6", "date": "2023-03-17", "outlet": "Medium" }
+  ]
+}

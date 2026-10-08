@@ -1,0 +1,8 @@
+{
+  "groups": [
+    { "name": "Backend", "items": ["Python", "Django", "Wagtail", "Flask", "Django REST Framework", "Celery"] },
+    { "name": "Frontend", "items": ["JavaScript", "TypeScript", "React", "Next.js", "HTML5", "CSS3", "Bootstrap"] },
+    { "name": "Data", "items": ["PostgreSQL", "MongoDB", "SQL", "SQLAlchemy", "Pandas"] },
+    { "name": "Cloud & DevOps", "items": ["Docker", "AWS (EC2, Fargate, ECR, S3)", "Terraform", "Ansible", "GitHub Actions", "Nginx", "DigitalOcean", "Render", "Linux (Ubuntu)"] }
+  ]
+}

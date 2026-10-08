@@ -1,0 +1,146 @@
+---
+// Friendly error screen, the same pattern as SeeBlu's: brand, round icon, one plain sentence, clear next steps.
+// GitHub Pages only lets a static site customise "page not found" (404.html); it has no server that could fail.
+import { Image } from 'astro:assets';
+import photo from '../images/profile.jpg';
+import profile from '../data/profile.json';
+import { url } from '../lib/url.js';
+
+const { heading, text, links = [] } = Astro.props;
+---
+<main class="error">
+  <a class="brand" href={url()}>
+    <Image src={photo} alt="" width={64} height={64} loading="eager" />
+    <span>{profile.name}</span>
+  </a>
+  <span class="icon" aria-hidden="true"><slot name="icon" /></span>
+  <h1>{heading}</h1>
+  <p>{text}</p>
+  <div class="actions">
+    <a class="btn btn-primary" href={url()}>Go to Home</a>
+    <button class="btn btn-ghost" type="button" data-back>Go back</button>
+  </div>
+  {links.length > 0 && (
+    <nav class="suggestions" aria-label="Popular pages">
+      <p class="mono">Maybe you were looking for</p>
+      <ul>
+        {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+      </ul>
+    </nav>
+  )}
+</main>
+
+<script>
+  document.querySelector('[data-back]')?.addEventListener('click', () => {
+    if (history.length > 1 && document.referrer) history.back();
+    else location.assign(document.querySelector<HTMLAnchorElement>('.brand')!.href);
+  });
+</script>
+
+<style>
+  .error {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    min-height: 100vh;
+    min-height: 100dvh;
+    width: min(100% - 2rem, 26rem);
+    margin-inline: auto;
+    padding-block: 2rem;
+    text-align: center;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+  }
+
+  .brand img {
+    width: 2.1rem;
+    height: 2.1rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 6rem;
+    height: 6rem;
+    margin-bottom: 1.4rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .icon :global(svg) {
+    width: 2.75rem;
+    height: 2.75rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    letter-spacing: -0.03em;
+  }
+
+  p {
+    max-width: 20rem;
+    margin: 0.6rem auto 1.75rem;
+    color: var(--muted);
+  }
+
+  .actions {
+    display: grid;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .actions .btn {
+    width: 100%;
+    min-height: 3.1rem;
+  }
+
+  .suggestions {
+    width: 100%;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .suggestions p {
+    margin: 0 auto 0.9rem;
+    font-size: 0.78rem;
+  }
+
+  .suggestions ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    list-style: none;
+  }
+
+  .suggestions a {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .suggestions a:hover {
+    border-color: var(--ink);
+  }
+</style>

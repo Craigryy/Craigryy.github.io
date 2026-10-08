@@ -1,0 +1,271 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { faMoon, faSun, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import photo from '../images/profile.jpg';
+import profile from '../data/profile.json';
+import { url } from '../lib/url.js';
+
+const links = [
+  { href: url('#work'), label: 'Work' },
+  { href: url('#stack'), label: 'Stack' },
+  { href: url('#journey'), label: 'Journey' },
+  { href: url('#writing'), label: 'Writing' },
+  { href: url('about/'), label: 'About' },
+];
+const here = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="container bar">
+    <a class="brand" href={url()} aria-label={`${profile.name}, home`}>
+      <Image src={photo} alt="" width={72} height={72} loading="eager" />
+      <span>
+        <strong>{profile.name}</strong>
+        <small class="mono">{profile.role.toLowerCase()}</small>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Main">
+      <ul>
+        {links.map((link) => (
+          <li><a href={link.href} aria-current={link.href === here ? 'page' : undefined}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="actions">
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark">
+        <span class="moon"><Icon icon={faMoon} /></span>
+        <span class="sun"><Icon icon={faSun} /></span>
+      </button>
+      <a class="btn btn-primary btn-sm hire" href={url('#contact')}>Hire me</a>
+      <details class="menu" data-menu>
+        <summary aria-label="Menu">
+          <span class="open"><Icon icon={faBars} /></span>
+          <span class="close"><Icon icon={faXmark} /></span>
+        </summary>
+        <div class="menu-panel">
+          <ul>
+            {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+            <li><a href={url('#contact')}>Contact</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Theme switch: remembers the choice on this device.
+  document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+    const next = dark ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem('theme', next);
+    } catch {}
+  });
+
+  // Phone menu: close it after a link is tapped, on Escape, or on a tap outside it.
+  const menu = document.querySelector<HTMLDetailsElement>('[data-menu]');
+  if (menu) {
+    menu.addEventListener('click', (event) => {
+      if ((event.target as Element).closest('a')) menu.open = false;
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') menu.open = false;
+    });
+    document.addEventListener('click', (event) => {
+      if (!menu.contains(event.target as Node)) menu.open = false;
+    });
+  }
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--line);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+    backdrop-filter: saturate(1.4) blur(14px);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    min-height: 4.25rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 0;
+    text-decoration: none;
+  }
+
+  .brand img {
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--line-strong);
+  }
+
+  .brand span {
+    display: grid;
+    line-height: 1.2;
+  }
+
+  .brand strong {
+    font-size: 0.98rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand small {
+    color: var(--muted);
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  .nav {
+    margin-left: auto;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav a {
+    display: block;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    color: var(--ink-2);
+    font-size: 0.93rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .nav a:hover,
+  .nav a[aria-current='page'] {
+    background: var(--bg-2);
+    color: var(--ink);
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .theme-toggle,
+  .menu summary {
+    display: grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--ink);
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+
+  .sun,
+  :global(:root[data-theme='dark']) .moon {
+    display: none;
+  }
+
+  :global(:root[data-theme='dark']) .sun {
+    display: inline;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .moon {
+      display: none;
+    }
+
+    :global(:root:not([data-theme='light'])) .sun {
+      display: inline;
+    }
+  }
+
+  .menu {
+    position: relative;
+    display: none;
+  }
+
+  .menu summary {
+    list-style: none;
+  }
+
+  .menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu .close,
+  .menu[open] .open {
+    display: none;
+  }
+
+  .menu[open] .close {
+    display: inline;
+  }
+
+  .menu-panel {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.6rem);
+    min-width: 12rem;
+    padding: 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--surface);
+    box-shadow: var(--shadow);
+  }
+
+  .menu-panel ul {
+    list-style: none;
+  }
+
+  .menu-panel a {
+    display: block;
+    padding: 0.7rem 0.85rem;
+    border-radius: 10px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .menu-panel a:hover {
+    background: var(--bg-2);
+  }
+
+  @media (max-width: 860px) {
+    .nav {
+      display: none;
+    }
+
+    .actions {
+      margin-left: auto;
+    }
+
+    .menu {
+      display: block;
+    }
+  }
+
+  /* Small phones: the photo stays, the name moves out of the way of "Hire me" (it is big in the hero). */
+  @media (max-width: 420px) {
+    .brand span {
+      display: none;
+    }
+  }
+</style>

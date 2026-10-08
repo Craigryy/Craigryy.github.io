@@ -1,0 +1,290 @@
+---
+// GitHub Pages can't send email itself, so the form posts to Web3Forms (free), which forwards it to your inbox.
+// Without a key (PUBLIC_WEB3FORMS_KEY, see the README) the section shows email and LinkedIn buttons instead.
+import Icon from './Icon.astro';
+import { faArrowRight, faLocationDot, faClock, faDownload, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import profile from '../data/profile.json';
+import { url } from '../lib/url.js';
+
+const key = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+const linkedin = profile.socials.find((s) => s.network === 'linkedin');
+const { area, city, country } = profile.location;
+---
+<section class="section contact" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="panel">
+      <div class="intro">
+        <span class="index mono">05 / Contact</span>
+        <h2 id="contact-title">Let’s build something together.</h2>
+        <p class="pitch">
+          Tell me about your team or your project and I’ll reply by email.
+        </p>
+        <a class="email" href={`mailto:${profile.email}`}>{profile.email} <Icon icon={faArrowRight} /></a>
+        <ul class="facts">
+          <li><Icon icon={faLocationDot} /> {[area, city, country].filter(Boolean).join(', ')}</li>
+          <li><Icon icon={faClock} /> West Africa Time (UTC+1)</li>
+          <li><a href={url(profile.cv)} download><Icon icon={faDownload} /> Download my CV</a></li>
+        </ul>
+      </div>
+
+      {key ? (
+        <form class="form" action="https://api.web3forms.com/submit" method="POST" data-contact>
+          <input type="hidden" name="access_key" value={key} />
+          <input type="hidden" name="subject" value={`New message from your portfolio`} />
+          <input type="hidden" name="from_name" value={`${profile.name} portfolio`} />
+          <input type="checkbox" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label>
+            <span>Your name</span>
+            <input name="name" required maxlength="100" autocomplete="name" />
+          </label>
+          <label>
+            <span>Your email</span>
+            <input type="email" name="email" required maxlength="200" autocomplete="email" />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" required rows="5" maxlength="3000" placeholder="A role, a project, or just hello"></textarea>
+          </label>
+          <button class="btn btn-accent" type="submit" data-send>Send message <Icon icon={faArrowRight} /></button>
+          <p class="status" role="status" aria-live="polite" data-status></p>
+        </form>
+      ) : (
+        <div class="direct">
+          <p>The quickest way to reach me:</p>
+          <a class="btn btn-accent" href={`mailto:${profile.email}`}><Icon icon={faEnvelope} /> Email me</a>
+          {linkedin && <a class="btn btn-ghost on-panel" href={linkedin.url} target="_blank" rel="noopener"><Icon icon={faLinkedin} /> Message me on LinkedIn</a>}
+        </div>
+      )}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Sends the form without leaving the page. Without JavaScript the form still posts to Web3Forms normally.
+  const form = document.querySelector<HTMLFormElement>('[data-contact]');
+  if (form) {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const button = form.querySelector<HTMLButtonElement>('[data-send]')!;
+    const email = form.closest('.panel')?.querySelector<HTMLAnchorElement>('.email')?.textContent?.trim();
+    const say = (text: string, state: string) => {
+      status.textContent = text;
+      status.dataset.state = state;
+    };
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(form));
+      if (data.botcheck) return;
+      button.disabled = true;
+      say('Sending…', 'sending');
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({ ...data, subject: `New message from ${data.name} (portfolio)` }),
+        });
+        const result = await response.json().catch(() => ({}));
+        if (!response.ok || !result.success) throw new Error(result.message);
+        form.reset();
+        say('Thanks! Your message is on its way. I’ll reply by email.', 'sent');
+      } catch {
+        say(`Couldn’t send right now. Please email me at ${email}.`, 'error');
+      } finally {
+        button.disabled = false;
+      }
+    });
+  }
+</script>
+
+<style>
+  .contact {
+    padding-bottom: clamp(4rem, 8vw, 6rem);
+  }
+
+  .panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    overflow: hidden;
+    padding: clamp(1.5rem, 5vw, 3.5rem);
+    border-radius: calc(var(--radius) + 10px);
+    background: var(--panel);
+    color: var(--panel-ink);
+  }
+
+  .panel::before {
+    content: '';
+    position: absolute;
+    right: -10rem;
+    top: -12rem;
+    width: 30rem;
+    height: 30rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgb(216 250 104 / 0.22), transparent 65%);
+    pointer-events: none;
+  }
+
+  .index {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    font-size: 0.82rem;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4.6vw, 3.2rem);
+    letter-spacing: -0.04em;
+  }
+
+  .pitch {
+    max-width: 30rem;
+    margin-top: 1rem;
+    color: #b9c8bf;
+  }
+
+  .email {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.75rem;
+    color: var(--accent);
+    font-size: clamp(1.1rem, 2.6vw, 1.45rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  .email:hover {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+
+  .facts {
+    display: grid;
+    gap: 0.6rem;
+    margin-top: 1.75rem;
+    color: #b9c8bf;
+    font-size: 0.95rem;
+    list-style: none;
+  }
+
+  .facts li,
+  .facts a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .facts a {
+    text-decoration: none;
+  }
+
+  .facts a:hover {
+    color: var(--panel-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .facts :global(svg) {
+    width: 1rem;
+    color: var(--accent);
+  }
+
+  .form {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+
+  label {
+    display: grid;
+    gap: 0.4rem;
+    color: #b9c8bf;
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgb(237 242 232 / 0.16);
+    border-radius: 12px;
+    background: rgb(237 242 232 / 0.06);
+    color: var(--panel-ink);
+    font: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 8rem;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #7d9488;
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: var(--accent);
+    background: rgb(237 242 232 / 0.09);
+    outline: none;
+  }
+
+  .form .btn {
+    justify-self: start;
+  }
+
+  .form .btn:disabled {
+    opacity: 0.6;
+    cursor: wait;
+  }
+
+  .status {
+    min-height: 1.5em;
+    font-size: 0.95rem;
+  }
+
+  .status[data-state='sent'] {
+    color: var(--accent);
+  }
+
+  .status[data-state='error'] {
+    color: #ffb4a8;
+  }
+
+  .direct {
+    position: relative;
+    display: grid;
+    gap: 0.75rem;
+    align-content: center;
+    justify-items: start;
+  }
+
+  .direct p {
+    color: #b9c8bf;
+  }
+
+  .on-panel {
+    border-color: rgb(237 242 232 / 0.3);
+    color: var(--panel-ink);
+  }
+
+  .on-panel:hover {
+    border-color: var(--panel-ink);
+  }
+
+  @media (max-width: 820px) {
+    .panel {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

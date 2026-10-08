@@ -1,0 +1,70 @@
+---
+import Icon from './Icon.astro';
+import { faServer, faDisplay, faDatabase, faCloud, faCode } from '@fortawesome/free-solid-svg-icons';
+import stack from '../data/stack.json';
+
+// An icon for the usual group names; anything else gets a code icon.
+const iconFor = (name) => {
+  const n = name.toLowerCase();
+  if (n.includes('back')) return faServer;
+  if (n.includes('front')) return faDisplay;
+  if (n.includes('data')) return faDatabase;
+  if (n.includes('cloud') || n.includes('devops')) return faCloud;
+  return faCode;
+};
+---
+<section class="section" id="stack" aria-labelledby="stack-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="index">02 / Stack</span>
+        <h2 id="stack-title">Tools I use every day</h2>
+        <p>From the database to the browser to the server it runs on.</p>
+      </div>
+    </div>
+    <div class="groups">
+      {stack.groups.map((group) => (
+        <div class="group">
+          <h3><span class="icon"><Icon icon={iconFor(group.name)} /></span>{group.name}</h3>
+          <ul class="chips">
+            {group.items.map((item) => <li class="chip">{item}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .groups {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 1rem;
+  }
+
+  .group {
+    padding: 1.4rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.1rem;
+    font-size: 1.1rem;
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 0.9rem;
+  }
+</style>

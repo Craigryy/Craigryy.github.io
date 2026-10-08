@@ -1,0 +1,88 @@
+---
+// Every page: the <head> Google and link previews read, the header and the footer.
+import { Font } from 'astro:assets';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import profile from '../data/profile.json';
+import { url, absolute } from '../lib/url.js';
+
+const {
+  title = profile.seo.title,
+  description = profile.seo.description,
+  image, // a full https:// address; defaults to the site's share card (public/og.png)
+  imageAlt = `${profile.name}, ${profile.role} in ${profile.location.city}, ${profile.location.country}`,
+  type = 'website',
+  schema, // structured data (JSON-LD) describing this page for Google
+  noindex = false,
+  bare = false, // error pages: no header or footer
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const shareImage = image || absolute('og.png');
+const twitter = profile.socials.find((s) => s.network === 'x' || s.network === 'twitter');
+const twitterHandle = twitter?.url.match(/(?:twitter|x)\.com\/([^/?#]+)/)?.[1];
+// Stops a "</script>" inside a project's text from ending the structured data early.
+const jsonLd = schema && JSON.stringify(schema).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {!noindex && <link rel="canonical" href={canonical} />}
+    <meta name="robots" content={noindex ? 'noindex' : 'index, follow, max-image-preview:large, max-snippet:-1'} />
+    <meta name="author" content={profile.name} />
+    {profile.seo.keywords?.length > 0 && <meta name="keywords" content={profile.seo.keywords.join(', ')} />}
+    {profile.seo.googleVerification && <meta name="google-site-verification" content={profile.seo.googleVerification} />}
+    <meta name="geo.region" content={`${profile.location.countryCode}-LA`} />
+    <meta name="geo.placename" content={`${profile.location.area}, ${profile.location.city}`} />
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={profile.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={shareImage} />
+    <meta property="og:image:alt" content={imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {twitterHandle && <meta name="twitter:creator" content={`@${twitterHandle}`} />}
+
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f5ef" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0b1c17" />
+    <link rel="icon" href={url('favicon.ico')} sizes="any" />
+    <link rel="apple-touch-icon" href={url('logo192.png')} />
+    <link rel="manifest" href={url('manifest.json')} />
+    <link rel="sitemap" href={url('sitemap.xml')} />
+
+    <Font cssVariable="--font-sans" preload={[{ weight: 400 }, { weight: 700 }]} />
+    <Font cssVariable="--font-mono" />
+
+    <!-- Light or dark: the visitor's choice if they picked one, otherwise their device setting. Runs before the page
+         paints so it never flashes the wrong colours. -->
+    <script is:inline>
+      (() => {
+        let theme;
+        try { theme = localStorage.getItem('theme'); } catch {}
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+  </head>
+  <body>
+    {bare ? (
+      <slot />
+    ) : (
+      <>
+        <a class="skip-link" href="#main">Skip to content</a>
+        <SiteHeader />
+        <main id="main">
+          <slot />
+        </main>
+        <SiteFooter />
+      </>
+    )}
+  </body>
+</html>

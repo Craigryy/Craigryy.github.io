@@ -1,0 +1,43 @@
+# Builds the Astro site and publishes it on GitHub Pages on every push to main (including saves from the admin page).
+# Pages source must be "GitHub Actions" (Settings → Pages), which is already set for this repo.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Reads the site's address from the Pages settings: https://craigryy.github.io now, your domain once you add one.
+      - id: pages
+        uses: actions/configure-pages@v6
+      - uses: withastro/action@v6
+        env:
+          SITE_URL: ${{ steps.pages.outputs.origin }}
+          BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Repo Settings → Secrets and variables → Actions → Variables → WEB3FORMS_KEY (optional; see README).
+          PUBLIC_WEB3FORMS_KEY: ${{ vars.WEB3FORMS_KEY }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

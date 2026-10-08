@@ -1,0 +1,90 @@
+---
+import Icon from './Icon.astro';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import writing from '../data/writing.json';
+
+const articles = [...writing.articles].sort((a, b) => String(b.date).localeCompare(String(a.date)));
+const when = (date) => new Date(date).toLocaleDateString('en-GB', { month: 'short', year: 'numeric', timeZone: 'UTC' });
+---
+{articles.length > 0 && (
+  <section class="section" id="writing" aria-labelledby="writing-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <span class="index">04 / Writing</span>
+          <h2 id="writing-title">Notes from the build</h2>
+          <p>What I learn while building, written down for the next developer.</p>
+        </div>
+        {writing.profile && <a class="text-link" href={writing.profile} target="_blank" rel="noopener">All articles <Icon icon={faArrowUpRightFromSquare} /></a>}
+      </div>
+      <ul class="articles">
+        {articles.map((article) => (
+          <li>
+            <a href={article.url} target="_blank" rel="noopener">
+              <time class="mono" datetime={article.date}>{when(article.date)}</time>
+              <span class="title">{article.title}</span>
+              <span class="outlet">{article.outlet} <Icon icon={faArrowUpRightFromSquare} /></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+<style>
+  .articles {
+    list-style: none;
+    border-top: 1px solid var(--line);
+  }
+
+  .articles a {
+    display: grid;
+    grid-template-columns: 7rem minmax(0, 1fr) auto;
+    align-items: baseline;
+    gap: 0.4rem 1.5rem;
+    padding: 1.3rem 0.5rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+    transition: background-color 0.2s ease, padding 0.25s ease;
+  }
+
+  .articles a:hover {
+    padding-left: 1rem;
+    background: var(--surface);
+  }
+
+  time,
+  .outlet {
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .title {
+    font-size: 1.12rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .articles a:hover .title {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .outlet {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+  }
+
+  @media (max-width: 640px) {
+    .articles a {
+      grid-template-columns: 1fr auto;
+    }
+
+    .title {
+      grid-column: 1 / -1;
+      grid-row: 2;
+    }
+  }
+</style>

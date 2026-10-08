@@ -1,0 +1,159 @@
+---
+import Icon from './Icon.astro';
+import CodeCard from './CodeCard.astro';
+import { faArrowDown, faDownload } from '@fortawesome/free-solid-svg-icons';
+import profile from '../data/profile.json';
+import { socialIcon } from '../lib/socials.js';
+import { titlesOf, projectUrl } from '../lib/projects.js';
+import { url } from '../lib/url.js';
+
+const { projects } = Astro.props;
+const titles = titlesOf(projects);
+// Each role gets its own colour and angle, like stickers on an Instagram story.
+const colours = ['green', 'lime', 'paper'];
+const tilts = [-3, 2, -1.5];
+const { city, country } = profile.location;
+---
+<section class="hero" aria-labelledby="hero-title">
+  <div class="grid-bg" aria-hidden="true"></div>
+  <div class="container layout">
+    <div class="copy">
+      <h1 id="hero-title">
+        {profile.name}
+        <span>{profile.role} in {city}, {country}.</span>
+      </h1>
+      {titles.length > 0 && (
+        <ul class="titles" aria-label="What I’ve founded and built">
+          {titles.map(({ project, text }, index) => (
+            <li class="sticker" style={`--tilt: ${tilts[index % tilts.length]}deg`}>
+              <a class={`story story-${colours[index % colours.length]}`} href={projectUrl(project)}>{text}</a>
+            </li>
+          ))}
+        </ul>
+      )}
+      <p class="lead">{profile.intro}</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#work">See my work <Icon icon={faArrowDown} /></a>
+        <a class="btn btn-ghost" href={url(profile.cv)} download>Download CV <Icon icon={faDownload} /></a>
+      </div>
+      <ul class="socials" aria-label="Find me online">
+        {profile.socials.map((social) => (
+          <li>
+            <a href={social.url} target="_blank" rel="noopener me">
+              <Icon icon={socialIcon(social.network)} /><span>{social.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <CodeCard titles={titles} />
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: clamp(3rem, 8vw, 6rem) clamp(3.5rem, 7vw, 5rem);
+    overflow: hidden;
+  }
+
+  /* Faint engineering-paper grid with a lime glow, fading out towards the edges. */
+  .grid-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(38rem 26rem at 85% 10%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%),
+      linear-gradient(var(--line) 1px, transparent 1px) 0 0 / 44px 44px,
+      linear-gradient(90deg, var(--line) 1px, transparent 1px) 0 0 / 44px 44px;
+    mask-image: radial-gradient(ellipse 90% 75% at 60% 20%, #000 35%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 60% 20%, #000 35%, transparent 80%);
+    opacity: 0.85;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: clamp(3rem, 8.2vw, 5.6rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
+  }
+
+  h1 span {
+    display: block;
+    margin-top: 0.9rem;
+    color: var(--muted);
+    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+  }
+
+  .titles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin-top: 1.6rem;
+    padding-left: 0.2rem;
+    list-style: none;
+  }
+
+  .titles a {
+    font-size: clamp(1.02rem, 1.7vw, 1.22rem);
+  }
+
+  .titles li:hover {
+    transform: rotate(0deg) scale(1.04);
+  }
+
+  .lead {
+    max-width: 36rem;
+    margin-top: 1.5rem;
+    color: var(--ink-2);
+    font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+    line-height: 1.6;
+  }
+
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 1.75rem;
+    list-style: none;
+  }
+
+  .socials a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .socials a:hover {
+    color: var(--ink);
+  }
+
+  @media (max-width: 900px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>

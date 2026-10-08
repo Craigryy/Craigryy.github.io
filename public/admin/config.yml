@@ -1,0 +1,218 @@
+# The admin page (https://craigryy.github.io/admin/). Sign in with a GitHub token (README → "Edit the site
+# from the admin page"). Every save is a commit to main, and the GitHub Pages workflow publishes it in about a
+# minute. The fields here match src/content.config.ts; a field Astro doesn't know about is ignored.
+
+backend:
+  name: github
+  repo: Craigryy/Craigryy.github.io
+  branch: main
+  commit_messages:
+    create: 'Add {{collection}} "{{slug}}" (admin)'
+    update: 'Update {{collection}} "{{slug}}" (admin)'
+    delete: 'Delete {{collection}} "{{slug}}" (admin)'
+    uploadMedia: 'Upload "{{path}}" (admin)'
+    deleteMedia: 'Delete "{{path}}" (admin)'
+
+# craigryy.github.io keeps working after you add a domain: GitHub forwards it to the new address.
+site_url: https://craigryy.github.io/
+display_url: https://craigryy.github.io/
+logo_url: /logo192.png
+
+# Files uploaded outside a project (your CV) go to public/files/ and are linked as /files/<name>.
+media_folder: /public/files
+public_folder: /files
+
+output:
+  omit_empty_optional_fields: true
+
+collections:
+  - name: projects
+    label: Projects
+    label_singular: Project
+    description: Each project gets a card on the home page and its own page. "Order" 1 shows first.
+    folder: src/content/projects
+    path: '{{slug}}/index'
+    extension: md
+    format: frontmatter
+    # The screenshot is saved next to the project's index.md, where Astro optimises it.
+    media_folder: ''
+    public_folder: ''
+    create: true
+    delete: true
+    summary: '{{title}} · {{year}}'
+    sortable_fields: [order, year, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: One-line description
+        name: tagline
+        widget: string
+        hint: Shown under the title, e.g. "A business discovery and directory platform".
+      - label: Your role
+        name: role
+        widget: string
+        required: false
+        hint: e.g. Founder, Creator, Lead developer. Shown as "Founder of SeeBlu" under your name and on the card. Leave empty for side projects.
+      - { label: Year, name: year, widget: number, value_type: int, min: 2000, max: 2100 }
+      - label: Live site
+        name: url
+        widget: string
+        required: false
+        pattern: ['^https?://\S+$', 'Start with https://']
+        hint: When the project moves to its own domain, change it here.
+      - label: Source code
+        name: repo
+        widget: string
+        required: false
+        pattern: ['^https?://\S+$', 'Start with https://']
+        hint: A GitHub link. Leave empty for private code.
+      - label: Screenshot
+        name: image
+        widget: image
+        required: false
+        hint: Any size; it is resized when the site builds. Wide (16:10) looks best. Without one the card shows the project name.
+      - label: Screenshot description
+        name: alt
+        widget: string
+        required: false
+        hint: What the screenshot shows, for screen readers and Google Images.
+      - label: More screenshots
+        name: gallery
+        widget: list
+        required: false
+        summary: '{{caption}}'
+        hint: Shown on the project's own page, e.g. the desktop view and the phone view.
+        fields:
+          - { label: Screenshot, name: image, widget: image }
+          - { label: Caption, name: caption, widget: string, required: false }
+      - label: Built with
+        name: stack
+        widget: list
+        required: false
+        hint: One technology per item, most important first. Cards show the first few.
+      - { label: Big card at the top, name: featured, widget: boolean, default: false, required: false }
+      - label: Order
+        name: order
+        widget: number
+        value_type: int
+        default: 100
+        hint: Smaller numbers show first (1 = first).
+      - { label: Hide from the site (draft), name: draft, widget: boolean, default: false, required: false }
+      - label: Write-up
+        name: body
+        widget: markdown
+        required: false
+        hint: The case study on the project's own page. What it is, what you built, how it runs.
+
+  - name: site
+    label: Site content
+    description: Your profile, the About page, your stack, experience and articles.
+    files:
+      - name: profile
+        label: Profile, hero and Google
+        file: src/data/profile.json
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Full name, name: fullName, widget: string, required: false, hint: Shown on the About page and given to Google as another name. }
+          - { label: Job title, name: role, widget: string, hint: 'e.g. "Full-stack web developer". Used in the hero and in Google results.' }
+          - { label: Introduction, name: intro, widget: text, hint: The paragraph under your name. }
+          - label: Location
+            name: location
+            widget: object
+            fields:
+              - { label: Area, name: area, widget: string, required: false, hint: e.g. Festac Town }
+              - { label: City, name: city, widget: string }
+              - { label: Country, name: country, widget: string }
+              - { label: Country code, name: countryCode, widget: string, hint: Two letters, e.g. NG }
+          - { label: Email, name: email, widget: string }
+          - { label: CV (PDF), name: cv, widget: file, hint: Upload a new PDF to replace the CV behind every "Download CV" button. }
+          - { label: Code card stack, name: codeCard, widget: list, hint: The technologies in the code window in the hero. Keep it to 6 or 7. }
+          - label: Social links
+            name: socials
+            widget: list
+            summary: '{{label}}'
+            fields:
+              - label: Network
+                name: network
+                widget: select
+                options: [github, linkedin, x, medium, instagram, spotify, youtube, tiktok, facebook, website]
+              - { label: Label, name: label, widget: string }
+              - { label: Link, name: url, widget: string, pattern: ['^https?://\S+$', 'Start with https://'] }
+          - label: Google
+            name: seo
+            widget: object
+            fields:
+              - { label: Page title in Google, name: title, widget: string, hint: About 60 characters. Put the job and the place in it. }
+              - { label: Description in Google, name: description, widget: text, hint: About 150 characters. Who you are, where, and what you've built. }
+              - { label: Search phrases, name: keywords, widget: list, required: false, hint: What recruiters might type, e.g. "web developer in Lagos". }
+              - { label: Google Search Console code, name: googleVerification, widget: string, required: false, hint: 'Only the content="…" part of the HTML tag Search Console gives you.' }
+
+      - name: about
+        label: About page
+        file: src/content/pages/about.md
+        fields:
+          - { label: Heading, name: title, widget: string }
+          - { label: Description in Google, name: description, widget: text }
+          - { label: Spotify embed link, name: spotify, widget: string, required: false, hint: 'Spotify → Share → Embed, then copy the link that starts with https://open.spotify.com/embed/' }
+          - { label: Text, name: body, widget: markdown }
+
+      - name: stack
+        label: Stack
+        file: src/data/stack.json
+        fields:
+          - label: Groups
+            name: groups
+            widget: list
+            summary: '{{name}}'
+            fields:
+              - { label: Group name, name: name, widget: string, hint: e.g. Backend, Frontend, Data, Cloud & DevOps }
+              - { label: Technologies, name: items, widget: list }
+
+      - name: journey
+        label: Experience and education
+        file: src/data/journey.json
+        fields:
+          - label: Experience
+            name: experience
+            widget: list
+            required: false
+            summary: '{{role}} · {{org}}'
+            fields:
+              - { label: Job title, name: role, widget: string }
+              - { label: Company, name: org, widget: string }
+              - { label: Place, name: place, widget: string, required: false }
+              - { label: Dates, name: period, widget: string, hint: 'e.g. "Jul 2021 – Jan 2022" or "2024 – Present"' }
+              - { label: What you did, name: points, widget: list, required: false }
+          - label: Education
+            name: education
+            widget: list
+            required: false
+            summary: '{{title}} · {{org}}'
+            fields:
+              - { label: Degree or course, name: title, widget: string }
+              - { label: School, name: org, widget: string }
+              - { label: Dates, name: period, widget: string }
+              - { label: Note, name: note, widget: string, required: false, hint: e.g. CGPA 4.0 / 5 }
+          - label: Recommended by
+            name: references
+            widget: list
+            required: false
+            summary: '{{name}}'
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Job title and company, name: role, widget: string }
+              - { label: Context, name: context, widget: string, required: false, hint: 'e.g. "Internship · Nigeria · Nov 2021 – Feb 2023"' }
+
+      - name: writing
+        label: Writing
+        file: src/data/writing.json
+        fields:
+          - { label: All articles link, name: profile, widget: string, required: false, hint: Your Medium (or blog) page. }
+          - label: Articles
+            name: articles
+            widget: list
+            summary: '{{title}}'
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Link, name: url, widget: string, pattern: ['^https?://\S+$', 'Start with https://'] }
+              - { label: Date, name: date, widget: datetime, format: YYYY-MM-DD, time_format: false }
+              - { label: Where, name: outlet, widget: string, default: Medium }

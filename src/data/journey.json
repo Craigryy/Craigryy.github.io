@@ -1,0 +1,23 @@
+{
+  "experience": [
+    {
+      "role": "Data Analyst Intern",
+      "org": "Heritage Energy Operational Services Ltd",
+      "place": "Lagos, Nigeria",
+      "period": "Jul 2021 – Jan 2022",
+      "points": [
+        "Helped the senior data analyst analyse oil and water samples from the field.",
+        "Showed the team how to record and organise periodic field data in Microsoft Excel.",
+        "Worked with senior engineers in an agile team and delivered my tasks on time."
+      ]
+    }
+  ],
+  "education": [
+    { "title": "BSc Biochemistry", "org": "Delta State University, Abraka", "period": "Dec 2018 – Mar 2023", "note": "CGPA 4.0 / 5" },
+    { "title": "The Complete Web Development Bootcamp", "org": "Udemy", "period": "Apr 2023 – Jul 2023", "note": "" },
+    { "title": "The Complete Python Pro Bootcamp", "org": "Udemy", "period": "Jan 2023 – Mar 2023", "note": "" }
+  ],
+  "references": [
+    { "name": "Samuel James", "role": "Senior DevOps Engineer, ELATEC GmbH", "context": "Internship · Nigeria · Nov 2021 – Feb 2023" }
+  ]
+}
