@@ -1,7 +1,7 @@
 ---
 title: Kinomos
 tagline: A business discovery and directory platform
-role: Creator
+role: Lead Developer
 year: 2026
 url: https://kinomos.com
 image: cover.png
@@ -22,6 +22,7 @@ stack:
   - DigitalOcean
 featured: true
 order: 2
+draft: false
 ---
 
 Kinomos helps people discover businesses and the community around them. I created it and built it end to end, from the
