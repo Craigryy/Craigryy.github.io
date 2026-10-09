@@ -2,16 +2,20 @@
 import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Timetable from '../components/Timetable.astro';
 import Stack from '../components/Stack.astro';
 import Journey from '../components/Journey.astro';
 import Writing from '../components/Writing.astro';
 import Contact from '../components/Contact.astro';
+import AnimePanel from '../components/AnimePanel.astro';
+import Icon from '../components/Icon.astro';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import profile from '../data/profile.json';
 import { getProjects, titlesOf } from '../lib/projects.js';
 import { url, absolute } from '../lib/url.js';
 import { graph, person, website, websiteId, personId, projectThing } from '../lib/schema.js';
 
-// Every folder in src/content/projects/ is a project. "featured" ones get the big cards.
+// Every folder in src/content/projects/ is a project. "featured" ones become the big stops; the rest the timetable.
 const projects = await getProjects();
 const featured = projects.filter((p) => p.data.featured);
 const others = projects.filter((p) => !p.data.featured);
@@ -36,22 +40,24 @@ const schema = graph(
 <Base schema={schema}>
   <Hero projects={projects} />
 
-  <section class="section" id="work" aria-labelledby="work-title">
+  <section class="section" id="work" data-stop="work" aria-labelledby="work-title">
     <div class="container">
-      <div class="section-head">
+      <div class="section-sign">
         <div>
-          <span class="index">01 / Work</span>
-          <h2 id="work-title">Things I’ve built</h2>
-          <p>Products I founded, platforms I maintain and side projects that taught me something.</p>
+          <h2 id="work-title" class="paint">Things I’ve shipped</h2>
+          <p>Live products, and the side projects that taught me how to build them.</p>
         </div>
-        <a class="text-link" href={url('projects/')}>All {projects.length} projects →</a>
+        <a class="text-link" href={url('projects/')}>More projects <Icon icon={faArrowRight} /></a>
       </div>
-      <div class="featured">
-        {featured.map((project, index) => <ProjectCard project={project} featured eager={index === 0} />)}
-      </div>
+      <ol class="featured">
+        {featured.map((project, index) => (
+          <li><ProjectCard project={project} flip={index % 2 === 1} eager={index === 0} /></li>
+        ))}
+      </ol>
       {others.length > 0 && (
-        <div class="grid">
-          {others.map((project) => <ProjectCard project={project} />)}
+        <div class="more">
+          <h3>More projects</h3>
+          <Timetable projects={others} caption="More projects" />
         </div>
       )}
     </div>
@@ -60,24 +66,29 @@ const schema = graph(
   <Stack />
   <Journey titles={titles} />
   <Writing />
+  <AnimePanel />
   <Contact />
 </Base>
 
 <style>
-  /* The hero already ends with plenty of space. */
   #work {
-    padding-top: clamp(2.5rem, 5vw, 3.5rem);
+    padding-top: clamp(3.5rem, 7vw, 5.5rem);
   }
 
   .featured {
     display: grid;
-    gap: 1.25rem;
+    gap: clamp(3rem, 7vw, 5rem);
+    list-style: none;
   }
 
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
-    gap: 1.25rem;
-    margin-top: 1.25rem;
+  .more {
+    margin-top: clamp(3.5rem, 8vw, 5.5rem);
+  }
+
+  .more h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    font-weight: 800;
+    letter-spacing: -0.025em;
   }
 </style>

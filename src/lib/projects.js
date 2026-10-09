@@ -15,5 +15,19 @@ export const projectUrl = (project) => url(projectPath(project));
 // Name for the screenshot's page-to-page animation; must be unique on a page and a valid CSS name.
 export const coverName = (project) => `cover-${slugOf(project).replace(/[^a-z0-9-]/gi, '-')}`;
 
-// "Founder of SeeBlu", "Creator of Kinomos": every project with a role.
-export const titlesOf = (projects) => projects.filter((p) => p.data.role).map((p) => ({ project: p, text: `${p.data.role} of ${p.data.title}` }));
+// A role as typed in the admin ("lead developer ", "Lead Developer", "contributor"), tidied for display in sentence
+// case: "Lead developer". Words in capitals (CTO, DevOps) are left as they are.
+export const roleLabel = (role) =>
+  (role || '')
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word, i) => (i === 0 ? word.replace(/^\p{Ll}/u, (c) => c.toUpperCase()) : /^\p{Lu}\p{Ll}+$/u.test(word) ? word.toLowerCase() : word))
+    .join(' ');
+
+// "Lead developer of SeeBlu", "Contributor to Scriptures and Power": every project with a role.
+export const titleOf = (project) => {
+  const role = roleLabel(project.data.role);
+  return `${role} ${/^contribut/i.test(role) ? 'to' : 'of'} ${project.data.title}`;
+};
+export const titlesOf = (projects) => projects.filter((p) => roleLabel(p.data.role)).map((p) => ({ project: p, text: titleOf(p) }));

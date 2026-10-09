@@ -125,7 +125,6 @@ collections:
               - { label: Country code, name: countryCode, widget: string, hint: Two letters, e.g. NG }
           - { label: Email, name: email, widget: string }
           - { label: CV (PDF), name: cv, widget: file, hint: Upload a new PDF to replace the CV behind every "Download CV" button. }
-          - { label: Code card stack, name: codeCard, widget: list, hint: The technologies in the code window in the hero. Keep it to 6 or 7. }
           - label: Social links
             name: socials
             widget: list
@@ -137,6 +136,24 @@ collections:
                 options: [github, linkedin, x, medium, instagram, spotify, youtube, tiktok, facebook, website]
               - { label: Label, name: label, widget: string }
               - { label: Link, name: url, widget: string, pattern: ['^https?://\S+$', 'Start with https://'] }
+          - label: Anime panel
+            name: anime
+            widget: object
+            required: false
+            hint: The manga panel just before Contact on the home page.
+            fields:
+              - { label: Speech bubble, name: line, widget: string, required: false, default: Not giving up is my magic. }
+              - label: Pictures
+                name: art
+                widget: list
+                required: false
+                max: 3
+                summary: '{{alt}}'
+                hint: Up to three, one per panel (Asta, Julius…). Only use art you have the rights to (your own, commissioned or licensed); official anime images can get the site taken down. With no pictures the panel shows a black grimoire.
+                fields:
+                  - { label: Picture, name: image, widget: image }
+                  - { label: Description, name: alt, widget: string, hint: What the picture shows, for screen readers. }
+                  - { label: Credit, name: credit, widget: string, required: false, hint: Artist or licence, shown under the panel. }
           - label: Google
             name: seo
             widget: object

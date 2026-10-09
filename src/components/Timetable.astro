@@ -1,0 +1,245 @@
+---
+// Projects as a route timetable on a signboard: year, project, what it's built with, links.
+// `thumbs` adds a small window with the screenshot (the Projects page). On phones each row becomes a block.
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { projectUrl, roleLabel } from '../lib/projects.js';
+
+const { projects, caption, thumbs = false } = Astro.props;
+---
+<div class="board sheet">
+  <table class:list={['timetable', { thumbs }]}>
+    <caption class="visually-hidden">{caption}</caption>
+    <thead>
+      <tr class="board-caps">
+        <th scope="col">Year</th>
+        <th scope="col">Project</th>
+        <th scope="col">Built with</th>
+        <th scope="col"><span class="visually-hidden">Links</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      {projects.map((project) => {
+        const { title, tagline, role, year, url, repo, image, alt, stack } = project.data;
+        const href = projectUrl(project);
+        return (
+          <tr>
+            <td class="year nums" data-label="Year">{year}</td>
+            <th scope="row" class="name">
+              {thumbs && (
+                <a class="window thumb" href={href} tabindex="-1" aria-hidden="true">
+                  {image ? <Image src={image} alt={alt || ''} widths={[200, 400]} sizes="12rem" /> : <span class="no-shot">{title}</span>}
+                </a>
+              )}
+              <span class="what">
+                <a class="paint-plain" href={href}>{title}</a>
+                <span class="tagline">{roleLabel(role) ? `${roleLabel(role)} · ` : ''}{tagline}</span>
+              </span>
+            </th>
+            <td class="tools" data-label="Built with">{stack.slice(0, 4).join(' · ')}{stack.length > 4 && ` · +${stack.length - 4}`}</td>
+            <td class="go">
+              <a href={href}>Case study</a>
+              {url && <a href={url} target="_blank" rel="noopener">Live <Icon icon={faArrowUpRightFromSquare} /><span class="visually-hidden"> ({title})</span></a>}
+              {repo && <a href={repo} target="_blank" rel="noopener"><Icon icon={faGithub} /> Code<span class="visually-hidden"> for {title}</span></a>}
+            </td>
+          </tr>
+        );
+      })}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .sheet {
+    overflow: hidden;
+  }
+
+  .timetable {
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.98rem;
+  }
+
+  thead tr {
+    position: relative;
+    z-index: 1;
+    background: var(--band);
+    color: var(--band-ink);
+  }
+
+  thead th {
+    padding: 0.8rem 1.2rem;
+    text-align: left;
+    font-weight: 700;
+  }
+
+  tbody tr {
+    border-top: 1px solid var(--board-rule);
+    transition: background-color 0.2s ease;
+  }
+
+  tbody tr:first-child {
+    border-top: 0;
+  }
+
+  tbody tr:hover {
+    background: color-mix(in srgb, var(--band) 6%, transparent);
+  }
+
+  td,
+  tbody th {
+    padding: 1.1rem 1.2rem;
+    vertical-align: top;
+    text-align: left;
+    font-weight: 400;
+  }
+
+  .year {
+    width: 5rem;
+    font-stretch: 78%;
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+
+  .name {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .what {
+    display: grid;
+    gap: 0.25rem;
+  }
+
+  .what a {
+    font-size: 1.25rem;
+    line-height: 1.1;
+    text-decoration: none;
+  }
+
+  .what a:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--shade);
+    text-decoration-thickness: 3px;
+  }
+
+  .tagline {
+    color: var(--board-muted);
+    font-size: 0.95rem;
+  }
+
+  .tools {
+    width: 30%;
+    color: var(--board-muted);
+    font-stretch: 78%;
+    font-size: 0.92rem;
+    font-weight: 500;
+  }
+
+  .go {
+    width: 12rem;
+    white-space: nowrap;
+  }
+
+  .go a {
+    display: block;
+    width: fit-content;
+    font-weight: 700;
+    font-size: 0.92rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+  }
+
+  .go a + a {
+    margin-top: 0.3rem;
+  }
+
+  .go a:hover {
+    text-decoration-color: var(--shade);
+  }
+
+  .go :global(svg) {
+    font-size: 0.8em;
+  }
+
+  .thumb {
+    flex: none;
+    width: 7.5rem;
+    padding: 0.3rem;
+    border-radius: 10px;
+  }
+
+  .thumb img,
+  .thumb .no-shot {
+    display: block;
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  .thumb .no-shot {
+    display: grid;
+    place-items: center;
+    padding: 0.3rem;
+    background: color-mix(in srgb, var(--band) 45%, var(--window));
+    color: #ffffff;
+    font-size: 0.72rem;
+    font-weight: 800;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  @media (max-width: 760px) {
+    thead {
+      display: none;
+    }
+
+    .timetable,
+    tbody,
+    tr,
+    td,
+    tbody th {
+      display: block;
+      width: 100%;
+    }
+
+    tbody tr {
+      padding: 1rem 1.1rem;
+    }
+
+    td,
+    tbody th {
+      padding: 0;
+    }
+
+    .year {
+      width: auto;
+      margin-bottom: 0.35rem;
+    }
+
+    .tools {
+      margin-top: 0.6rem;
+    }
+
+    .go {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem 1.1rem;
+      margin-top: 0.75rem;
+    }
+
+    .go a + a {
+      margin-top: 0;
+    }
+
+    .thumb {
+      width: 5.5rem;
+    }
+  }
+</style>

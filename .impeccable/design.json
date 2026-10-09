@@ -1,0 +1,895 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-09T10:12:05.255Z",
+  "title": "Design System: Harrison James",
+  "extensions": {
+    "colorMeta": {
+      "ground": {
+        "role": "neutral",
+        "displayName": "Cement Grey",
+        "canonical": "#d4d0c9",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 81.8)",
+          "oklch(26.4% 0.011 81.8)",
+          "oklch(37.9% 0.011 81.8)",
+          "oklch(49.3% 0.011 81.8)",
+          "oklch(60.7% 0.011 81.8)",
+          "oklch(72.1% 0.011 81.8)",
+          "oklch(83.6% 0.011 81.8)",
+          "oklch(95.0% 0.011 81.8)"
+        ]
+      },
+      "ground-ink": {
+        "role": "neutral",
+        "displayName": "Lettering Ink",
+        "canonical": "#181617",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 345.6)",
+          "oklch(26.4% 0.004 345.6)",
+          "oklch(37.9% 0.004 345.6)",
+          "oklch(49.3% 0.004 345.6)",
+          "oklch(60.7% 0.004 345.6)",
+          "oklch(72.1% 0.004 345.6)",
+          "oklch(83.6% 0.004 345.6)",
+          "oklch(95.0% 0.004 345.6)"
+        ]
+      },
+      "ground-muted": {
+        "role": "neutral",
+        "displayName": "Weathered Ink",
+        "canonical": "#4b4541",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 56.1)",
+          "oklch(26.4% 0.011 56.1)",
+          "oklch(37.9% 0.011 56.1)",
+          "oklch(49.3% 0.011 56.1)",
+          "oklch(60.7% 0.011 56.1)",
+          "oklch(72.1% 0.011 56.1)",
+          "oklch(83.6% 0.011 56.1)",
+          "oklch(95.0% 0.011 56.1)"
+        ]
+      },
+      "ground-rule": {
+        "role": "neutral",
+        "displayName": "Body Hairline",
+        "canonical": "rgb(24 22 23 / 0.22)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 345.6)",
+          "oklch(26.4% 0.004 345.6)",
+          "oklch(37.9% 0.004 345.6)",
+          "oklch(49.3% 0.004 345.6)",
+          "oklch(60.7% 0.004 345.6)",
+          "oklch(72.1% 0.004 345.6)",
+          "oklch(83.6% 0.004 345.6)",
+          "oklch(95.0% 0.004 345.6)"
+        ]
+      },
+      "band": {
+        "role": "primary",
+        "displayName": "Livery Burgundy",
+        "canonical": "#6d1526",
+        "tonalRamp": [
+          "oklch(15.0% 0.121 15.5)",
+          "oklch(26.4% 0.121 15.5)",
+          "oklch(37.9% 0.121 15.5)",
+          "oklch(49.3% 0.121 15.5)",
+          "oklch(60.7% 0.121 15.5)",
+          "oklch(72.1% 0.121 15.5)",
+          "oklch(83.6% 0.121 15.5)",
+          "oklch(95.0% 0.121 15.5)"
+        ]
+      },
+      "band-ink": {
+        "role": "primary",
+        "displayName": "Band Lettering White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ]
+      },
+      "band-muted": {
+        "role": "primary",
+        "displayName": "Band Muted Pink",
+        "canonical": "#ead8db",
+        "tonalRamp": [
+          "oklch(15.0% 0.020 6.0)",
+          "oklch(26.4% 0.020 6.0)",
+          "oklch(37.9% 0.020 6.0)",
+          "oklch(49.3% 0.020 6.0)",
+          "oklch(60.7% 0.020 6.0)",
+          "oklch(72.1% 0.020 6.0)",
+          "oklch(83.6% 0.020 6.0)",
+          "oklch(95.0% 0.020 6.0)"
+        ]
+      },
+      "board": {
+        "role": "neutral",
+        "displayName": "Signboard White",
+        "canonical": "#faf9f7",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 84.6)",
+          "oklch(26.4% 0.003 84.6)",
+          "oklch(37.9% 0.003 84.6)",
+          "oklch(49.3% 0.003 84.6)",
+          "oklch(60.7% 0.003 84.6)",
+          "oklch(72.1% 0.003 84.6)",
+          "oklch(83.6% 0.003 84.6)",
+          "oklch(95.0% 0.003 84.6)"
+        ]
+      },
+      "board-ink": {
+        "role": "neutral",
+        "displayName": "Board Ink",
+        "canonical": "#181617",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 345.6)",
+          "oklch(26.4% 0.004 345.6)",
+          "oklch(37.9% 0.004 345.6)",
+          "oklch(49.3% 0.004 345.6)",
+          "oklch(60.7% 0.004 345.6)",
+          "oklch(72.1% 0.004 345.6)",
+          "oklch(83.6% 0.004 345.6)",
+          "oklch(95.0% 0.004 345.6)"
+        ]
+      },
+      "board-muted": {
+        "role": "neutral",
+        "displayName": "Board Muted",
+        "canonical": "#5d5651",
+        "tonalRamp": [
+          "oklch(15.0% 0.012 58.0)",
+          "oklch(26.4% 0.012 58.0)",
+          "oklch(37.9% 0.012 58.0)",
+          "oklch(49.3% 0.012 58.0)",
+          "oklch(60.7% 0.012 58.0)",
+          "oklch(72.1% 0.012 58.0)",
+          "oklch(83.6% 0.012 58.0)",
+          "oklch(95.0% 0.012 58.0)"
+        ]
+      },
+      "board-rule": {
+        "role": "neutral",
+        "displayName": "Board Hairline",
+        "canonical": "rgb(24 22 23 / 0.12)",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 345.6)",
+          "oklch(26.4% 0.004 345.6)",
+          "oklch(37.9% 0.004 345.6)",
+          "oklch(49.3% 0.004 345.6)",
+          "oklch(60.7% 0.004 345.6)",
+          "oklch(72.1% 0.004 345.6)",
+          "oklch(83.6% 0.004 345.6)",
+          "oklch(95.0% 0.004 345.6)"
+        ]
+      },
+      "shade": {
+        "role": "secondary",
+        "displayName": "Signal Burgundy",
+        "canonical": "#8a1c33",
+        "tonalRamp": [
+          "oklch(15.0% 0.144 14.8)",
+          "oklch(26.4% 0.144 14.8)",
+          "oklch(37.9% 0.144 14.8)",
+          "oklch(49.3% 0.144 14.8)",
+          "oklch(60.7% 0.144 14.8)",
+          "oklch(72.1% 0.144 14.8)",
+          "oklch(83.6% 0.144 14.8)",
+          "oklch(95.0% 0.144 14.8)"
+        ]
+      },
+      "route": {
+        "role": "neutral",
+        "displayName": "Route Charcoal",
+        "canonical": "#1b1a1c",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 308.3)",
+          "oklch(26.4% 0.004 308.3)",
+          "oklch(37.9% 0.004 308.3)",
+          "oklch(49.3% 0.004 308.3)",
+          "oklch(60.7% 0.004 308.3)",
+          "oklch(72.1% 0.004 308.3)",
+          "oklch(83.6% 0.004 308.3)",
+          "oklch(95.0% 0.004 308.3)"
+        ]
+      },
+      "route-lit": {
+        "role": "neutral",
+        "displayName": "Lit Letter",
+        "canonical": "#f2ede6",
+        "tonalRamp": [
+          "oklch(15.0% 0.011 76.6)",
+          "oklch(26.4% 0.011 76.6)",
+          "oklch(37.9% 0.011 76.6)",
+          "oklch(49.3% 0.011 76.6)",
+          "oklch(60.7% 0.011 76.6)",
+          "oklch(72.1% 0.011 76.6)",
+          "oklch(83.6% 0.011 76.6)",
+          "oklch(95.0% 0.011 76.6)"
+        ]
+      },
+      "route-ghost": {
+        "role": "neutral",
+        "displayName": "Ghost Stop",
+        "canonical": "#938c85",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 67.6)",
+          "oklch(26.4% 0.013 67.6)",
+          "oklch(37.9% 0.013 67.6)",
+          "oklch(49.3% 0.013 67.6)",
+          "oklch(60.7% 0.013 67.6)",
+          "oklch(72.1% 0.013 67.6)",
+          "oklch(83.6% 0.013 67.6)",
+          "oklch(95.0% 0.013 67.6)"
+        ]
+      },
+      "route-accent": {
+        "role": "secondary",
+        "displayName": "Signal Burgundy (route board)",
+        "canonical": "#8a1c33",
+        "tonalRamp": [
+          "oklch(15.0% 0.144 14.8)",
+          "oklch(26.4% 0.144 14.8)",
+          "oklch(37.9% 0.144 14.8)",
+          "oklch(49.3% 0.144 14.8)",
+          "oklch(60.7% 0.144 14.8)",
+          "oklch(72.1% 0.144 14.8)",
+          "oklch(83.6% 0.144 14.8)",
+          "oklch(95.0% 0.144 14.8)"
+        ]
+      },
+      "route-white": {
+        "role": "neutral",
+        "displayName": "Route Board White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ]
+      },
+      "window": {
+        "role": "neutral",
+        "displayName": "Tinted Glass",
+        "canonical": "#1d1c1e",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 308.3)",
+          "oklch(26.4% 0.004 308.3)",
+          "oklch(37.9% 0.004 308.3)",
+          "oklch(49.3% 0.004 308.3)",
+          "oklch(60.7% 0.004 308.3)",
+          "oklch(72.1% 0.004 308.3)",
+          "oklch(83.6% 0.004 308.3)",
+          "oklch(95.0% 0.004 308.3)"
+        ]
+      },
+      "clover": {
+        "role": "neutral",
+        "displayName": "Decal Black",
+        "canonical": "#141414",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ]
+      },
+      "manga-paper": {
+        "role": "neutral",
+        "displayName": "Manga Paper",
+        "canonical": "#f7f5f2",
+        "tonalRamp": [
+          "oklch(15.0% 0.005 78.3)",
+          "oklch(26.4% 0.005 78.3)",
+          "oklch(37.9% 0.005 78.3)",
+          "oklch(49.3% 0.005 78.3)",
+          "oklch(60.7% 0.005 78.3)",
+          "oklch(72.1% 0.005 78.3)",
+          "oklch(83.6% 0.005 78.3)",
+          "oklch(95.0% 0.005 78.3)"
+        ]
+      },
+      "manga-white": {
+        "role": "neutral",
+        "displayName": "Panel White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 0.0)",
+          "oklch(26.4% 0.000 0.0)",
+          "oklch(37.9% 0.000 0.0)",
+          "oklch(49.3% 0.000 0.0)",
+          "oklch(60.7% 0.000 0.0)",
+          "oklch(72.1% 0.000 0.0)",
+          "oklch(83.6% 0.000 0.0)",
+          "oklch(95.0% 0.000 0.0)"
+        ]
+      },
+      "manga-ink": {
+        "role": "neutral",
+        "displayName": "Manga Ink",
+        "canonical": "#181617",
+        "tonalRamp": [
+          "oklch(15.0% 0.004 345.6)",
+          "oklch(26.4% 0.004 345.6)",
+          "oklch(37.9% 0.004 345.6)",
+          "oklch(49.3% 0.004 345.6)",
+          "oklch(60.7% 0.004 345.6)",
+          "oklch(72.1% 0.004 345.6)",
+          "oklch(83.6% 0.004 345.6)",
+          "oklch(95.0% 0.004 345.6)"
+        ]
+      },
+      "ground-night": {
+        "role": "neutral",
+        "displayName": "Charcoal Body (night)",
+        "canonical": "#151414",
+        "tonalRamp": [
+          "oklch(15.0% 0.002 0.0)",
+          "oklch(26.4% 0.002 0.0)",
+          "oklch(37.9% 0.002 0.0)",
+          "oklch(49.3% 0.002 0.0)",
+          "oklch(60.7% 0.002 0.0)",
+          "oklch(72.1% 0.002 0.0)",
+          "oklch(83.6% 0.002 0.0)",
+          "oklch(95.0% 0.002 0.0)"
+        ],
+        "theme": "night"
+      },
+      "ground-ink-night": {
+        "role": "neutral",
+        "displayName": "Warm White Lettering (night)",
+        "canonical": "#eee9e3",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 72.7)",
+          "oklch(26.4% 0.010 72.7)",
+          "oklch(37.9% 0.010 72.7)",
+          "oklch(49.3% 0.010 72.7)",
+          "oklch(60.7% 0.010 72.7)",
+          "oklch(72.1% 0.010 72.7)",
+          "oklch(83.6% 0.010 72.7)",
+          "oklch(95.0% 0.010 72.7)"
+        ],
+        "theme": "night"
+      },
+      "ground-muted-night": {
+        "role": "neutral",
+        "displayName": "Weathered Ink (night)",
+        "canonical": "#aaa29a",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 67.6)",
+          "oklch(26.4% 0.015 67.6)",
+          "oklch(37.9% 0.015 67.6)",
+          "oklch(49.3% 0.015 67.6)",
+          "oklch(60.7% 0.015 67.6)",
+          "oklch(72.1% 0.015 67.6)",
+          "oklch(83.6% 0.015 67.6)",
+          "oklch(95.0% 0.015 67.6)"
+        ],
+        "theme": "night"
+      },
+      "ground-rule-night": {
+        "role": "neutral",
+        "displayName": "Body Hairline (night)",
+        "canonical": "rgb(238 233 227 / 0.18)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 72.7)",
+          "oklch(26.4% 0.010 72.7)",
+          "oklch(37.9% 0.010 72.7)",
+          "oklch(49.3% 0.010 72.7)",
+          "oklch(60.7% 0.010 72.7)",
+          "oklch(72.1% 0.010 72.7)",
+          "oklch(83.6% 0.010 72.7)",
+          "oklch(95.0% 0.010 72.7)"
+        ],
+        "theme": "night"
+      },
+      "band-muted-night": {
+        "role": "primary",
+        "displayName": "Band Muted Pink (night)",
+        "canonical": "#ecd9dc",
+        "tonalRamp": [
+          "oklch(15.0% 0.021 6.7)",
+          "oklch(26.4% 0.021 6.7)",
+          "oklch(37.9% 0.021 6.7)",
+          "oklch(49.3% 0.021 6.7)",
+          "oklch(60.7% 0.021 6.7)",
+          "oklch(72.1% 0.021 6.7)",
+          "oklch(83.6% 0.021 6.7)",
+          "oklch(95.0% 0.021 6.7)"
+        ],
+        "theme": "night"
+      },
+      "board-night": {
+        "role": "neutral",
+        "displayName": "Night Signboard",
+        "canonical": "#201e1e",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 17.4)",
+          "oklch(26.4% 0.003 17.4)",
+          "oklch(37.9% 0.003 17.4)",
+          "oklch(49.3% 0.003 17.4)",
+          "oklch(60.7% 0.003 17.4)",
+          "oklch(72.1% 0.003 17.4)",
+          "oklch(83.6% 0.003 17.4)",
+          "oklch(95.0% 0.003 17.4)"
+        ],
+        "theme": "night"
+      },
+      "board-ink-night": {
+        "role": "neutral",
+        "displayName": "Board Ink (night)",
+        "canonical": "#eee9e3",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 72.7)",
+          "oklch(26.4% 0.010 72.7)",
+          "oklch(37.9% 0.010 72.7)",
+          "oklch(49.3% 0.010 72.7)",
+          "oklch(60.7% 0.010 72.7)",
+          "oklch(72.1% 0.010 72.7)",
+          "oklch(83.6% 0.010 72.7)",
+          "oklch(95.0% 0.010 72.7)"
+        ],
+        "theme": "night"
+      },
+      "board-muted-night": {
+        "role": "neutral",
+        "displayName": "Board Muted (night)",
+        "canonical": "#aaa29a",
+        "tonalRamp": [
+          "oklch(15.0% 0.015 67.6)",
+          "oklch(26.4% 0.015 67.6)",
+          "oklch(37.9% 0.015 67.6)",
+          "oklch(49.3% 0.015 67.6)",
+          "oklch(60.7% 0.015 67.6)",
+          "oklch(72.1% 0.015 67.6)",
+          "oklch(83.6% 0.015 67.6)",
+          "oklch(95.0% 0.015 67.6)"
+        ],
+        "theme": "night"
+      },
+      "board-rule-night": {
+        "role": "neutral",
+        "displayName": "Board Hairline (night)",
+        "canonical": "rgb(238 233 227 / 0.13)",
+        "tonalRamp": [
+          "oklch(15.0% 0.010 72.7)",
+          "oklch(26.4% 0.010 72.7)",
+          "oklch(37.9% 0.010 72.7)",
+          "oklch(49.3% 0.010 72.7)",
+          "oklch(60.7% 0.010 72.7)",
+          "oklch(72.1% 0.010 72.7)",
+          "oklch(83.6% 0.010 72.7)",
+          "oklch(95.0% 0.010 72.7)"
+        ],
+        "theme": "night"
+      },
+      "shade-night": {
+        "role": "secondary",
+        "displayName": "Signal Burgundy (night)",
+        "canonical": "#a8293f",
+        "tonalRamp": [
+          "oklch(15.0% 0.162 16.2)",
+          "oklch(26.4% 0.162 16.2)",
+          "oklch(37.9% 0.162 16.2)",
+          "oklch(49.3% 0.162 16.2)",
+          "oklch(60.7% 0.162 16.2)",
+          "oklch(72.1% 0.162 16.2)",
+          "oklch(83.6% 0.162 16.2)",
+          "oklch(95.0% 0.162 16.2)"
+        ],
+        "theme": "night"
+      },
+      "route-accent-night": {
+        "role": "secondary",
+        "displayName": "Signal Burgundy, route board (night)",
+        "canonical": "#a3263f",
+        "tonalRamp": [
+          "oklch(15.0% 0.160 14.8)",
+          "oklch(26.4% 0.160 14.8)",
+          "oklch(37.9% 0.160 14.8)",
+          "oklch(49.3% 0.160 14.8)",
+          "oklch(60.7% 0.160 14.8)",
+          "oklch(72.1% 0.160 14.8)",
+          "oklch(83.6% 0.160 14.8)",
+          "oklch(95.0% 0.160 14.8)"
+        ],
+        "theme": "night"
+      },
+      "window-night": {
+        "role": "neutral",
+        "displayName": "Tinted Glass (night)",
+        "canonical": "#0d0c0d",
+        "tonalRamp": [
+          "oklch(15.0% 0.003 325.7)",
+          "oklch(26.4% 0.003 325.7)",
+          "oklch(37.9% 0.003 325.7)",
+          "oklch(49.3% 0.003 325.7)",
+          "oklch(60.7% 0.003 325.7)",
+          "oklch(72.1% 0.003 325.7)",
+          "oklch(83.6% 0.003 325.7)",
+          "oklch(95.0% 0.003 325.7)"
+        ],
+        "theme": "night"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (painted lettering)",
+        "purpose": "The name in the first viewport; page titles use the same paint at their own sizes."
+      },
+      "headline": {
+        "displayName": "Headline (section sign)",
+        "purpose": "Section headings painted on the body, with a plain line under them."
+      },
+      "title": {
+        "displayName": "Title (signboard)",
+        "purpose": "Project names on signboards and in the timetable."
+      },
+      "slogan": {
+        "displayName": "Slogan",
+        "purpose": "Role titles painted on the livery band."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "The role line under the name."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Copy on the body; intro to 38rem, sign lines to 36rem."
+      },
+      "prose": {
+        "displayName": "Prose",
+        "purpose": "Markdown write-ups and About, always on a signboard, max 68ch."
+      },
+      "label": {
+        "displayName": "Board caps",
+        "purpose": "Strips, table heads, dates, breadcrumbs, fact terms. Uppercase, set with font-stretch: 78%."
+      },
+      "label-stop": {
+        "displayName": "Route-board stop",
+        "purpose": "Stops on the route board and in the phone menu. Uppercase, font-stretch: 78%."
+      },
+      "label-route": {
+        "displayName": "Route line",
+        "purpose": "A project's tools as stops. Uppercase, font-stretch: 78%."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Every button; the Hire me plate is 800 at 0.92rem."
+      },
+      "bubble": {
+        "displayName": "Speech bubble",
+        "purpose": "The manga panel's line, uppercase, in ink on white."
+      }
+    },
+    "fonts": [
+      {
+        "family": "Bricolage Grotesque",
+        "source": "self-hosted variable woff2 (latin, latin-ext) via Astro font API, cssVariable --font-sans",
+        "axes": {
+          "weight": "200 800",
+          "width": "75% 100%"
+        },
+        "license": "SIL Open Font License"
+      }
+    ],
+    "themes": {
+      "day": "Default, and :root[data-theme=\"light\"].",
+      "night": "prefers-color-scheme: dark (unless data-theme=\"light\") or :root[data-theme=\"dark\"]. Swaps ground, ground-ink, ground-muted, ground-rule, band-muted, board, board-ink, board-muted, board-rule, display, shade, route-accent, window and focus to their -night values. band, route, route-lit, route-ghost and clover do not change. A 2px route-accent rule appears under the route board.",
+      "toggle": "Route-board button; choice stored in localStorage \"theme\" and applied before first paint."
+    },
+    "shadows": [
+      {
+        "name": "board-lift",
+        "value": "0 1px 0 rgb(0 0 0 / 0.08), 0 18px 32px -24px rgb(0 0 0 / 0.55)",
+        "purpose": "Every signboard."
+      },
+      {
+        "name": "window-lift",
+        "value": "inset 0 0 0 2px rgb(255 255 255 / 0.06), 0 22px 40px -28px rgb(0 0 0 / 0.7)",
+        "purpose": "Bus windows; the inset line is the rubber seal."
+      },
+      {
+        "name": "driver-window",
+        "value": "0 26px 44px -30px rgb(0 0 0 / 0.75)",
+        "purpose": "The hero photo window."
+      },
+      {
+        "name": "manga-page",
+        "value": "0 22px 40px -28px rgb(0 0 0 / 0.6)",
+        "purpose": "The manga page."
+      },
+      {
+        "name": "button-hover",
+        "value": "0 6px 14px -6px rgb(0 0 0 / 0.45)",
+        "purpose": "With the 2px button lift on hover; removed on press."
+      },
+      {
+        "name": "menu-panel",
+        "value": "inset 0 0 0 1px rgb(242 237 230 / 0.18), 0 18px 30px -12px rgb(0 0 0 / 0.6)",
+        "purpose": "The phone menu panel under the route board."
+      },
+      {
+        "name": "decal",
+        "value": "drop-shadow(0 4px 6px rgb(0 0 0 / 0.3))",
+        "purpose": "Filter on the clover sticker over the hero window."
+      },
+      {
+        "name": "livery-pinstripe",
+        "value": "0 calc(var(--stripe) / -1.5) 0 0 var(--ground), 0 calc(var(--stripe) / -1) 0 0 var(--band)",
+        "purpose": "Not depth: paints the 0.25rem pinstripe and 0.5rem gap above every full-bleed band."
+      }
+    ],
+    "motion": [
+      {
+        "name": "grimoire-float",
+        "value": "4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; 50%: translateY(-9px) rotate(-1.5deg); shadow 50%: scaleX(0.82), opacity 0.6",
+        "purpose": "The one authored motion. Only under prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "ease-lift",
+        "value": "0.25s cubic-bezier(0.22, 1, 0.36, 1)",
+        "purpose": "Button, Hire me and footer-social lift of 2px on hover."
+      },
+      {
+        "name": "ease-glide",
+        "value": "0.7s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Project screenshot rises 1.5% and scales 1.015 on hover."
+      },
+      {
+        "name": "row-slide",
+        "value": "0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Writing rows slide 0.6rem right on hover."
+      },
+      {
+        "name": "colour-change",
+        "value": "0.2s ease",
+        "purpose": "Stop, row and fill colour changes."
+      },
+      {
+        "name": "page-change",
+        "value": "@view-transition { navigation: auto }",
+        "purpose": "Cross-fade between pages; project covers carry a view-transition-name and glide into their page."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "animation/transition durations 0.01ms, view transitions off, smooth scroll off",
+        "purpose": "Global prefers-reduced-motion: reduce."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "plate-name",
+        "value": "380px",
+        "purpose": "Name plate keeps only the clover."
+      },
+      {
+        "name": "writing",
+        "value": "640px",
+        "purpose": "Writing date and outlet share a line; services dividers turn horizontal."
+      },
+      {
+        "name": "route-line",
+        "value": "760px",
+        "purpose": "Route lines turn vertical; timetable rows become blocks."
+      },
+      {
+        "name": "columns",
+        "value": "820px",
+        "purpose": "Two-column stops go to one column; facts board stops being sticky."
+      },
+      {
+        "name": "hero",
+        "value": "860px",
+        "purpose": "Hero reorders: copy, role band, then the photo window."
+      },
+      {
+        "name": "project-stop",
+        "value": "900px",
+        "purpose": "Window and signboard stack; signboard overlaps the window by 2rem."
+      },
+      {
+        "name": "colophon",
+        "value": "960px",
+        "purpose": "Colophon to two columns (one column at 600px)."
+      },
+      {
+        "name": "route-board",
+        "value": "980px",
+        "purpose": "Stops fold into the round menu button."
+      }
+    ],
+    "layout": {
+      "container": "min(100% - 2 * var(--gutter), 1160px)",
+      "focusRing": "3px solid var(--focus), offset 3px, radius 2px; --focus is route-lit on the route board and ground on the band"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Painted burgundy panel for the main call on any stop: Email me, Visit the live site, Read the case study.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg viewBox=\"0 0 512 512\" width=\"1em\" height=\"1em\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z\"/></svg> Email me</a>",
+      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3rem; padding: 0.8rem 1.35rem; border: 2px solid var(--band, #6d1526); border-radius: var(--radius, 6px); background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.98rem; line-height: 1.2; text-decoration: none; cursor: pointer; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, color 0.2s ease; } .ds-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.45); } .ds-btn:active { transform: translateY(0); box-shadow: none; } .ds-btn:focus-visible { outline: 3px solid var(--focus, #181617); outline-offset: 3px; }"
+    },
+    {
+      "name": "Line Button",
+      "kind": "button",
+      "refersTo": "button-line",
+      "description": "The second call beside a primary: a 2px outline in the text colour that fills with ink on hover (Download CV, Go back).",
+      "html": "<a class=\"ds-btn-line\" href=\"#\"><svg class=\"ds-btn-clover\" viewBox=\"-20 -20 40 40\" width=\"1.15em\" height=\"1.15em\" aria-hidden=\"true\"><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg> Download CV</a>",
+      "css": ".ds-btn-line { display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem; min-height: 3rem; padding: 0.8rem 1.35rem; border: 2px solid var(--band, #6d1526); border-radius: var(--radius, 6px); background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); font-weight: 700; font-size: 0.98rem; line-height: 1.2; text-decoration: none; cursor: pointer; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease, color 0.2s ease; border-color: currentColor; background: transparent; color: var(--ground-ink, #181617); } .ds-btn-line:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.45); background: var(--ground-ink, #181617); border-color: var(--ground-ink, #181617); color: var(--ground, #d4d0c9); } .ds-btn-line:active { transform: translateY(0); box-shadow: none; } .ds-btn-line:focus-visible { outline: 3px solid var(--focus, #181617); outline-offset: 3px; } .ds-btn-clover { display: inline-block; flex: none; overflow: visible; }"
+    },
+    {
+      "name": "Route Board",
+      "kind": "nav",
+      "refersTo": "route-board",
+      "description": "The sticky charcoal header in both services: name plate, ghosted stops with the current one lit, and the Hire me plate.",
+      "html": "<header class=\"ds-route\"><a class=\"ds-route-plate\" href=\"#\"><svg class=\"ds-route-clover\" viewBox=\"-20 -20 40 40\" width=\"1.55rem\" height=\"1.55rem\" aria-hidden=\"true\"><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><span>Harrison James</span></a><nav class=\"ds-route-stops\" aria-label=\"Main\"><a href=\"#\" class=\"ds-lit\" aria-current=\"true\">Work</a><a href=\"#\">Stack</a><a href=\"#\">Journey</a><a href=\"#\">Writing</a><a href=\"#\">About</a></nav><a class=\"ds-route-hire\" href=\"#\">Hire me</a></header>",
+      "css": ".ds-route { display: flex; align-items: center; gap: 1.25rem; min-height: 4.25rem; padding: 0 1.5rem; background: var(--route, #1b1a1c); color: #ffffff; font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); --focus: var(--route-lit, #f2ede6); } .ds-route-plate { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--route-lit, #f2ede6); text-decoration: none; } .ds-route-plate span { color: #ffffff; font-weight: 800; font-size: 1.05rem; letter-spacing: 0.01em; white-space: nowrap; } .ds-route-clover { display: inline-block; overflow: visible; } .ds-route-stops { display: flex; gap: 0.15rem; margin-left: auto; } .ds-route-stops a { display: block; padding: 0.5rem 0.7rem; color: var(--route-ghost, #938c85); font-stretch: 78%; font-size: 0.95rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; text-decoration: none; transition: color 0.2s ease; } .ds-route-stops a:hover, .ds-route-stops a.ds-lit { color: var(--route-lit, #f2ede6); } .ds-route-stops a.ds-lit { text-decoration: underline; text-decoration-color: var(--route-accent, #8a1c33); text-decoration-thickness: 3px; text-underline-offset: 0.5em; } .ds-route-hire { display: inline-flex; align-items: center; min-height: 2.5rem; padding: 0.5rem 1rem; border-radius: var(--radius, 6px); background: var(--route-accent, #8a1c33); color: #ffffff; font-weight: 800; font-size: 0.92rem; text-decoration: none; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-route-hire:hover { transform: translateY(-2px); } .ds-route a:focus-visible { outline: 3px solid var(--route-lit, #f2ede6); outline-offset: 3px; border-radius: 2px; }"
+    },
+    {
+      "name": "Project Signboard",
+      "kind": "card",
+      "refersTo": "signboard",
+      "description": "A painted signboard with the double frame: project title, burgundy strip (year and role), tagline, tools as a route line, and the case-study button.",
+      "html": "<article class=\"ds-board\"><h3 class=\"ds-board-title\"><a href=\"#\">Kinomos</a></h3><p class=\"ds-strip\"><time>2026</time><span>Lead developer of Kinomos</span></p><p class=\"ds-board-tagline\">A business discovery and directory platform</p><ol class=\"ds-route-line\"><li>Django</li><li>Wagtail</li><li>PostgreSQL</li><li>Celery</li><li class=\"ds-more\">+4 more</li></ol><a class=\"ds-board-btn\" href=\"#\">Read the case study <svg viewBox=\"0 0 448 512\" width=\"0.9em\" height=\"0.9em\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z\"/></svg></a></article>",
+      "css": ".ds-board { position: relative; max-width: 26rem; padding: 1.6rem 1.8rem 1.7rem; border: 3px solid var(--board-ink, #181617); border-radius: var(--radius, 6px); background: var(--board, #faf9f7); color: var(--board-ink, #181617); box-shadow: 0 1px 0 rgb(0 0 0 / 0.08), 0 18px 32px -24px rgb(0 0 0 / 0.55); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); } .ds-board::before { content: ''; position: absolute; inset: 5px; border: 1px solid var(--board-ink, #181617); border-radius: 2px; opacity: 0.55; pointer-events: none; } .ds-board-title { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.6rem); font-weight: 750; letter-spacing: -0.02em; line-height: 1; } .ds-board-title a { color: inherit; text-decoration: none; } .ds-board-title a:hover { text-decoration: underline; text-decoration-color: var(--shade, #8a1c33); text-decoration-thickness: 3px; } .ds-strip { display: inline-flex; flex-wrap: wrap; gap: 0.2rem 1rem; margin: 0.9rem 0 0; padding: 0.45rem 0.8rem; background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-weight: 700; font-size: 0.82rem; font-stretch: 78%; letter-spacing: 0.07em; text-transform: uppercase; } .ds-strip time { color: var(--route-lit, #f2ede6); font-variant-numeric: tabular-nums; } .ds-board-tagline { margin: 0.75rem 0 0; color: var(--board-muted, #5d5651); font-size: 1.04rem; } .ds-route-line { display: flex; flex-wrap: wrap; gap: 0.35rem 1.1rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-size: 0.86rem; font-stretch: 78%; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; } .ds-route-line li { display: inline-flex; align-items: center; } .ds-route-line li::before { content: ''; flex: none; width: 0.55rem; height: 0.55rem; margin-right: 0.4rem; border: 2px solid currentColor; border-radius: 50%; } .ds-route-line .ds-more::before { display: none; } .ds-board-btn { display: inline-flex; align-items: center; gap: 0.6rem; min-height: 2.5rem; margin-top: 1.5rem; padding: 0.5rem 1rem; border: 2px solid var(--band, #6d1526); border-radius: var(--radius, 6px); background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s cubic-bezier(0.22, 1, 0.36, 1); } .ds-board-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px -6px rgb(0 0 0 / 0.45); } .ds-board a:focus-visible { outline: 3px solid var(--focus, #181617); outline-offset: 3px; }"
+    },
+    {
+      "name": "Bus Window",
+      "kind": "custom",
+      "refersTo": "bus-window",
+      "description": "Opaque tinted frame with a rubber seal that holds every photo and screenshot; shown here in its no-screenshot state (the title lettered on the glass).",
+      "html": "<a class=\"ds-window\" href=\"#\"><span class=\"ds-window-glass\">SeeBlu</span></a>",
+      "css": ".ds-window { display: block; max-width: 30rem; overflow: hidden; padding: 0.55rem; border-radius: 18px; background: var(--window, #1d1c1e); box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.06), 0 22px 40px -28px rgb(0 0 0 / 0.7); text-decoration: none; } .ds-window-glass { display: grid; place-items: center; aspect-ratio: 16 / 10; border-radius: 11px; color: var(--route-lit, #f2ede6); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); font-weight: 750; letter-spacing: -0.02em; font-size: clamp(1.4rem, 3vw, 2rem); transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); } .ds-window:hover .ds-window-glass { transform: translateY(-1.5%) scale(1.015); } .ds-window:focus-visible { outline: 3px solid var(--focus, #181617); outline-offset: 3px; }"
+    },
+    {
+      "name": "Livery Band",
+      "kind": "custom",
+      "refersTo": "livery-band",
+      "description": "Full-bleed burgundy band with its pinstripe above, carrying the roles as painted slogans; the contact stop is the same band.",
+      "html": "<div class=\"ds-band-wrap\"><div class=\"ds-band\"><ul class=\"ds-slogans\"><li><svg class=\"ds-band-mark\" viewBox=\"-20 -20 40 40\" width=\"1.15rem\" height=\"1.15rem\" aria-hidden=\"true\"><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><a href=\"#\">Lead developer of SeeBlu</a></li><li><svg class=\"ds-band-mark\" viewBox=\"-20 -20 40 40\" width=\"1.15rem\" height=\"1.15rem\" aria-hidden=\"true\"><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><a href=\"#\">Lead developer of Kinomos</a></li><li><svg class=\"ds-band-mark\" viewBox=\"-20 -20 40 40\" width=\"1.15rem\" height=\"1.15rem\" aria-hidden=\"true\"><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg><a href=\"#\">Contributor to Scriptures and Power</a></li></ul></div></div>",
+      "css": ".ds-band-wrap { padding-top: 1.5rem; background: var(--ground, #d4d0c9); } .ds-band { background: var(--band, #6d1526); color: var(--band-ink, #ffffff); box-shadow: 0 calc(0.75rem / -1.5) 0 0 var(--ground, #d4d0c9), 0 -0.75rem 0 0 var(--band, #6d1526); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); } .ds-slogans { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem clamp(1.5rem, 4vw, 3rem); margin: 0; padding: 1.25rem 1.5rem; list-style: none; } .ds-slogans li { display: inline-flex; align-items: center; gap: 0.65rem; } .ds-band-mark { display: inline-block; flex: none; overflow: visible; opacity: 0.8; } .ds-slogans a { color: inherit; font-size: clamp(1.05rem, 2.2vw, 1.45rem); font-weight: 750; letter-spacing: -0.02em; line-height: 1.2; text-decoration: none; } .ds-slogans a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.25em; } .ds-slogans a:focus-visible { outline: 3px solid var(--ground, #d4d0c9); outline-offset: 3px; }"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "input",
+      "refersTo": "input-on-band",
+      "description": "Signboard-white field on the burgundy contact band; the 2px border turns the board's ink on focus.",
+      "html": "<div class=\"ds-field-band\"><label class=\"ds-field\"><span>Your email</span><input type=\"email\" placeholder=\"you@company.com\"></label></div>",
+      "css": ".ds-field-band { padding: 1.5rem; background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); } .ds-field { display: grid; gap: 0.4rem; max-width: 24rem; font-size: 0.92rem; font-weight: 700; } .ds-field input { width: 100%; padding: 0.85rem 1rem; border: 2px solid transparent; border-radius: var(--radius, 6px); background: var(--board, #faf9f7); color: var(--board-ink, #181617); font: inherit; font-size: 1rem; font-weight: 400; caret-color: var(--shade, #8a1c33); } .ds-field input::placeholder { color: var(--board-muted, #5d5651); } .ds-field input:focus { border-color: var(--board-ink, #181617); outline: none; }"
+    },
+    {
+      "name": "Board Strip and Services Tag",
+      "kind": "chip",
+      "refersTo": "board-strip",
+      "description": "Square burgundy label in board caps: year and role on a signboard, or a tool group head on the services board, with signal-burgundy diamonds before each tool.",
+      "html": "<div class=\"ds-services\"><h3 class=\"ds-tag\">Backend</h3><ul class=\"ds-tools\"><li>Python</li><li>Django</li><li>Wagtail</li></ul></div>",
+      "css": ".ds-services { padding: 1.6rem 1.7rem 1.8rem; background: var(--board, #faf9f7); color: var(--board-ink, #181617); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); } .ds-tag { display: inline-block; margin: 0 0 1rem; padding: 0.3rem 0.65rem; background: var(--band, #6d1526); color: var(--band-ink, #ffffff); font-size: 0.85rem; font-weight: 700; font-stretch: 78%; letter-spacing: 0.07em; text-transform: uppercase; } .ds-tools { display: grid; gap: 0.45rem; margin: 0; padding: 0; list-style: none; } .ds-tools li { display: flex; align-items: baseline; gap: 0.6rem; font-size: 1.04rem; font-weight: 600; } .ds-tools li::before { content: ''; flex: none; width: 0.45rem; height: 0.45rem; border-radius: 1px; background: var(--shade, #8a1c33); transform: translateY(-0.12em) rotate(45deg); }"
+    },
+    {
+      "name": "Manga Panel",
+      "kind": "custom",
+      "refersTo": "manga-page",
+      "description": "The signature moment before Contact: paper page, inked speed lines converging on the floating grimoire, and an overlapping speech bubble. Paper stays paper at night.",
+      "html": "<figure class=\"ds-manga\"><div class=\"ds-manga-panel\"><svg class=\"ds-speed\" viewBox=\"-100 -100 200 200\" preserveAspectRatio=\"xMidYMid slice\" aria-hidden=\"true\"><polygon points=\"160.0,2.5 159.9,6.6 56.4,1.6\"/><polygon points=\"159.4,14.3 158.6,21.3 66.4,7.5\"/><polygon points=\"158.3,23.3 155.9,35.8 62.9,11.8\"/><polygon points=\"157.0,30.8 154.5,41.5 66.4,15.4\"/><polygon points=\"153.6,44.8 152.1,49.7 52.4,16.2\"/><polygon points=\"148.4,59.7 145.9,65.6 40.5,17.3\"/><polygon points=\"143.2,71.4 142.4,72.9 44.7,22.6\"/><polygon points=\"141.0,75.5 139.9,77.7 53.4,29.1\"/><polygon points=\"137.1,82.5 134.0,87.5 59.3,37.2\"/><polygon points=\"133.2,88.6 129.1,94.5 45.3,31.7\"/><polygon points=\"125.0,99.8 121.0,104.7 46.8,38.9\"/><polygon points=\"117.3,108.8 112.8,113.5 47.2,45.6\"/><polygon points=\"105.3,120.5 100.5,124.5 42.0,50.0\"/><polygon points=\"97.5,126.9 95.2,128.6 42.3,56.0\"/><polygon points=\"96.0,128.0 85.3,135.4 26.7,38.7\"/><polygon points=\"87.2,134.1 83.7,136.4 28.0,44.4\"/><polygon points=\"80.9,138.0 76.4,140.6 27.8,49.2\"/><polygon points=\"68.0,144.8 64.1,146.6 21.8,48.1\"/><polygon points=\"62.9,147.1 56.1,149.8 21.2,53.0\"/><polygon points=\"57.0,149.5 52.7,151.1 18.4,50.5\"/><polygon points=\"52.4,151.2 47.2,152.9 18.6,56.7\"/><polygon points=\"45.1,153.5 40.0,154.9 18.2,65.7\"/><polygon points=\"38.8,155.2 33.3,156.5 14.4,62.1\"/><polygon points=\"30.5,157.1 25.5,158.0 9.0,50.9\"/><polygon points=\"14.9,159.3 13.1,159.5 5.2,58.8\"/><polygon points=\"3.7,160.0 -1.8,160.0 0.3,46.0\"/><polygon points=\"-9.7,159.7 -13.4,159.4 -4.9,67.1\"/><polygon points=\"-20.5,158.7 -23.9,158.2 -7.4,52.6\"/><polygon points=\"-30.3,157.1 -34.1,156.3 -13.8,67.3\"/><polygon points=\"-35.5,156.0 -41.8,154.4 -12.1,48.7\"/><polygon points=\"-47.3,152.9 -51.6,151.5 -17.0,52.4\"/><polygon points=\"-55.5,150.0 -59.6,148.5 -16.4,42.6\"/><polygon points=\"-70.4,143.7 -72.9,142.4 -22.4,44.7\"/><polygon points=\"-74.6,141.6 -79.6,138.8 -32.7,59.6\"/><polygon points=\"-87.1,134.2 -92.7,130.4 -25.3,37.2\"/><polygon points=\"-97.2,127.1 -98.5,126.1 -28.0,36.2\"/><polygon points=\"-103.0,122.4 -105.9,119.9 -31.0,36.0\"/><polygon points=\"-113.1,113.1 -117.3,108.8 -51.2,49.3\"/><polygon points=\"-118.8,107.2 -120.8,104.9 -41.6,36.9\"/><polygon points=\"-122.2,103.3 -125.2,99.7 -39.6,32.5\"/><polygon points=\"-126.9,97.5 -130.4,92.7 -52.9,39.1\"/><polygon points=\"-135.1,85.7 -136.7,83.2 -52.8,32.8\"/><polygon points=\"-141.3,75.0 -142.8,72.3 -62.9,32.6\"/><polygon points=\"-143.7,70.4 -144.7,68.3 -53.1,25.5\"/><polygon points=\"-149.6,56.8 -150.9,53.1 -43.8,16.0\"/><polygon points=\"-153.4,45.6 -154.4,42.1 -62.3,17.7\"/><polygon points=\"-157.2,29.8 -157.5,28.2 -48.0,8.9\"/><polygon points=\"-158.2,23.7 -159.1,17.2 -57.7,7.4\"/><polygon points=\"-159.8,8.9 -160.0,1.7 -71.1,2.4\"/><polygon points=\"-160.0,-3.9 -159.9,-5.9 -44.2,-1.4\"/><polygon points=\"-159.7,-10.2 -159.5,-12.3 -45.0,-3.2\"/><polygon points=\"-158.9,-19.1 -158.4,-22.3 -73.4,-9.6\"/><polygon points=\"-157.7,-26.9 -156.4,-33.5 -58.5,-11.3\"/><polygon points=\"-156.3,-34.2 -154.7,-40.9 -45.3,-10.9\"/><polygon points=\"-151.1,-52.5 -150.4,-54.6 -62.8,-22.3\"/><polygon points=\"-147.3,-62.4 -146.2,-65.0 -62.5,-27.1\"/><polygon points=\"-145.0,-67.7 -143.1,-71.6 -44.9,-21.7\"/><polygon points=\"-139.0,-79.3 -137.4,-81.9 -62.5,-36.5\"/><polygon points=\"-133.7,-87.9 -131.7,-90.8 -46.8,-31.5\"/><polygon points=\"-128.2,-95.7 -127.2,-97.1 -37.6,-28.4\"/><polygon points=\"-122.4,-103.1 -116.7,-109.5 -33.0,-29.3\"/><polygon points=\"-115.7,-110.5 -112.1,-114.2 -44.0,-43.3\"/><polygon points=\"-112.4,-113.8 -107.1,-118.9 -39.4,-41.8\"/><polygon points=\"-99.0,-125.7 -96.8,-127.4 -44.5,-57.5\"/><polygon points=\"-92.0,-130.9 -90.6,-131.8 -34.9,-50.2\"/><polygon points=\"-88.3,-133.4 -83.0,-136.8 -28.9,-45.6\"/><polygon points=\"-79.4,-138.9 -76.0,-140.8 -21.5,-38.7\"/><polygon points=\"-70.8,-143.5 -67.5,-145.1 -19.3,-40.3\"/><polygon points=\"-57.4,-149.3 -54.4,-150.5 -23.7,-63.5\"/><polygon points=\"-50.7,-151.8 -48.2,-152.6 -17.0,-52.3\"/><polygon points=\"-45.6,-153.4 -38.6,-155.3 -14.9,-54.5\"/><polygon points=\"-38.2,-155.4 -36.0,-155.9 -15.5,-65.3\"/><polygon points=\"-29.2,-157.3 -23.8,-158.2 -8.4,-50.2\"/><polygon points=\"-17.3,-159.1 -14.4,-159.3 -6.3,-62.8\"/><polygon points=\"-5.7,-159.9 -4.1,-159.9 -2.0,-66.3\"/><polygon points=\"6.0,-159.9 13.4,-159.4 3.2,-51.8\"/><polygon points=\"22.9,-158.3 26.6,-157.8 7.6,-48.7\"/><polygon points=\"29.4,-157.3 35.7,-156.0 13.2,-63.4\"/><polygon points=\"43.8,-153.9 45.7,-153.3 17.8,-61.0\"/><polygon points=\"55.2,-150.2 59.9,-148.4 24.1,-62.4\"/><polygon points=\"63.0,-147.1 65.9,-145.8 27.5,-62.3\"/><polygon points=\"74.8,-141.5 76.3,-140.7 28.5,-53.2\"/><polygon points=\"87.0,-134.3 89.9,-132.3 28.2,-42.4\"/><polygon points=\"92.1,-130.8 96.4,-127.7 27.1,-37.2\"/><polygon points=\"95.7,-128.2 100.8,-124.3 40.6,-52.2\"/><polygon points=\"106.7,-119.2 108.0,-118.1 29.9,-33.0\"/><polygon points=\"116.7,-109.5 121.0,-104.6 53.0,-47.8\"/><polygon points=\"120.8,-104.9 127.9,-96.2 39.6,-32.0\"/><polygon points=\"129.3,-94.3 133.3,-88.5 60.5,-42.1\"/><polygon points=\"133.5,-88.2 135.5,-85.0 43.8,-28.2\"/><polygon points=\"137.1,-82.5 138.0,-81.0 48.7,-28.9\"/><polygon points=\"142.6,-72.7 144.9,-67.8 49.6,-24.2\"/><polygon points=\"147.1,-62.9 148.0,-60.8 66.3,-27.8\"/><polygon points=\"148.8,-58.9 151.4,-51.8 63.1,-23.3\"/><polygon points=\"153.8,-44.3 154.9,-39.9 48.2,-13.2\"/><polygon points=\"155.2,-38.9 156.3,-34.3 44.5,-10.4\"/><polygon points=\"156.0,-35.7 157.7,-27.1 62.6,-12.5\"/><polygon points=\"158.9,-18.9 159.3,-14.8 67.7,-7.2\"/><polygon points=\"159.8,-7.1 160.0,-3.9 48.9,-1.7\"/></svg><svg class=\"ds-grimoire\" viewBox=\"0 0 200 250\" role=\"img\" aria-label=\"A black grimoire with a five-leaf clover on its cover\"><ellipse class=\"ds-grimoire-shadow\" cx=\"102\" cy=\"236\" rx=\"62\" ry=\"7\"/><g class=\"ds-grimoire-book\"><rect x=\"46\" y=\"30\" width=\"124\" height=\"186\" rx=\"5\" fill=\"#efe9de\"/><path d=\"M168 44 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><path d=\"M168 74 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><path d=\"M168 104 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><path d=\"M168 134 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><path d=\"M168 164 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><path d=\"M168 194 h-4\" stroke=\"#b9b1a4\" stroke-width=\"1.2\"/><rect x=\"40\" y=\"24\" width=\"130\" height=\"194\" rx=\"8\" fill=\"#0d0c0d\"/><rect x=\"30\" y=\"16\" width=\"134\" height=\"196\" rx=\"8\" fill=\"#1d1b1d\" stroke=\"#050505\" stroke-width=\"2\"/><rect x=\"30\" y=\"16\" width=\"18\" height=\"196\" rx=\"6\" fill=\"#121112\"/><path d=\"M38 30 v168\" stroke=\"#2b282b\" stroke-width=\"2\"/><g fill=\"#77706a\"><path d=\"M164 16 h-26 l26 26 z\"/><path d=\"M164 212 h-26 l26 -26 z\"/><path d=\"M48 16 h18 l-18 18 z\"/><path d=\"M48 212 h18 l-18 -18 z\"/></g><rect x=\"156\" y=\"100\" width=\"20\" height=\"26\" rx=\"4\" fill=\"#3a3537\" stroke=\"#050505\" stroke-width=\"1.5\"/><circle cx=\"106\" cy=\"112\" r=\"38\" fill=\"none\" stroke=\"#8a1c33\" stroke-width=\"5\"/><circle cx=\"106\" cy=\"112\" r=\"31\" fill=\"none\" stroke=\"#3a3537\" stroke-width=\"1.5\"/><g transform=\"translate(106 112) scale(1.45)\" fill=\"#d9d2c8\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g transform=\"translate(106 112) scale(1.45)\" stroke=\"#1d1b1d\" stroke-width=\"0.9\" stroke-linecap=\"round\" opacity=\"0.7\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g></g></svg></div><p class=\"ds-bubble\">Not giving up is my magic.</p></figure>",
+      "css": ".ds-manga { position: relative; display: grid; max-width: 34rem; margin: 2rem 0 0; padding: 7px; border: 3px solid #181617; background: #f7f5f2; box-shadow: 0 22px 40px -28px rgb(0 0 0 / 0.6); font-family: var(--sans, 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif); } .ds-manga-panel { position: relative; display: grid; place-items: center; min-height: 18rem; overflow: hidden; border: 3px solid #181617; background: #ffffff; } .ds-speed { position: absolute; inset: 0; width: 100%; height: 100%; fill: #181617; } .ds-grimoire { position: relative; width: min(100%, 11rem); height: auto; overflow: visible; } .ds-grimoire-shadow { fill: rgb(0 0 0 / 0.22); transform-origin: 102px 236px; } @media (prefers-reduced-motion: no-preference) { .ds-grimoire-book { animation: ds-float 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; } .ds-grimoire-shadow { animation: ds-shadow 4.5s cubic-bezier(0.45, 0, 0.55, 1) infinite; } } @keyframes ds-float { 50% { transform: translateY(-9px) rotate(-1.5deg); } } @keyframes ds-shadow { 50% { transform: scaleX(0.82); opacity: 0.6; } } .ds-bubble { position: absolute; top: -1.4rem; right: 1.5rem; z-index: 2; max-width: 15rem; margin: 0; padding: 0.85rem 1.2rem; border: 3px solid #181617; border-radius: 50%; background: #ffffff; color: #181617; font-size: 1rem; font-weight: 800; line-height: 1.2; text-align: center; text-transform: uppercase; letter-spacing: 0.01em; } .ds-bubble::after { content: ''; position: absolute; left: 28%; bottom: -1rem; width: 1.2rem; height: 1.2rem; border-right: 3px solid #181617; border-bottom: 3px solid #181617; background: #ffffff; transform: skewX(28deg) rotate(30deg); }"
+    },
+    {
+      "name": "Clover Decal",
+      "kind": "custom",
+      "description": "The black five-leaf clover sticker with its white cut line, stuck at an angle over the corner of a window or sign.",
+      "html": "<div class=\"ds-decal-host\"><div class=\"ds-decal-window\"></div><svg class=\"ds-decal\" viewBox=\"-20 -20 40 40\" width=\"3.4rem\" height=\"3.4rem\" aria-hidden=\"true\"><g fill=\"none\" stroke=\"#ffffff\" stroke-width=\"3.4\" stroke-linejoin=\"round\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/></g><g fill=\"currentColor\"><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(0)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(72)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(144)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(216)\"/><path d=\"M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z\" transform=\"rotate(288)\"/><circle r=\"4.2\"/></g><g stroke=\"#ffffff\" stroke-width=\"1.1\" stroke-linecap=\"round\" opacity=\"0.55\"><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(0)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(72)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(144)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(216)\"/><path d=\"M0 -3.2 L0 -12.6\" transform=\"rotate(288)\"/></g><path d=\"M0 1.5 C 1 6 4 10 8.5 13.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"/></svg></div>",
+      "css": ".ds-decal-host { position: relative; width: 12rem; padding: 1.5rem 1.5rem 0 0; } .ds-decal-window { height: 8rem; border-radius: 18px; background: var(--window, #1d1c1e); } .ds-decal { position: absolute; top: 0.4rem; right: 0.2rem; display: inline-block; overflow: visible; color: var(--clover, #141414); transform: rotate(14deg); filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.3)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Danfo Line",
+    "overview": "The site is a Lagos danfo bus repainted for one driver. Its body is cement grey. Burgundy livery bands carry the roles and the calls to action. White signboards are bolted on wherever there is reading to do. Dark bus windows hold the photo and every screenshot, and a charcoal route board runs along the top, its stops lighting up as you travel down the page. Products are stops on the route. Roles are painted on the band like bus slogans (\"Lead developer of SeeBlu\"). The world is the danfo's signwriting with its colours and lettering translated: yellow repainted grey and burgundy, the hand-lettered display face replaced by one variable grotesque, the rolling destination blind taken off.\n\nDensity is medium and confident. Big painted lettering sits straight on the bare body, the long reading moves onto framed boards, and full-bleed bands mark where one leg of the route ends. Everything is flat paint and opaque tint. Depth comes from boards and windows sitting slightly proud of the body, never from translucency. One typeface does all the signwriting by moving along its weight and width axes.\n\nThe personality belongs to a Black Clover fan: a black five-leaf clover decal stuck on windows and on the contact band, and one manga panel (\"Off the clock\") where inked speed lines converge on a black grimoire drawn for this site. The nods stay as decals and one panel; the route and the work carry the page. Rejected outright: yellow, frosted glass, the dark developer portfolio with a code card and an equal grid of project cards, the destination blind, and official anime artwork.",
+    "keyCharacteristics": [
+      "Cement-grey body, burgundy bands, warm-white signboards, charcoal route board, dark bus windows.",
+      "One variable typeface (Bricolage Grotesque): 800 for painted lettering, narrow caps for labels.",
+      "The livery module: every band edge and heavy rule is cut from a 0.75rem stripe.",
+      "Projects as stops of unequal weight (window plus overlapping signboard), the rest in a timetable.",
+      "Night service repaints the body and boards charcoal; bands and route board stay the same.",
+      "One authored motion: the grimoire floats. Everything else only answers a hover or a page change."
+    ],
+    "rules": [
+      {
+        "name": "The Two Burgundies Rule",
+        "body": "Livery Burgundy is paint for surfaces; Signal Burgundy is for lines and marks. A band is never Signal Burgundy, and an underline is never Livery Burgundy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Repainted Rule",
+        "body": "The danfo's yellow was repainted grey and burgundy. No yellow, amber or gold appears anywhere in the chrome; only screenshots may carry it.",
+        "section": "colors"
+      },
+      {
+        "name": "The Night Service Rule",
+        "body": "Night service repaints the body and the boards charcoal and turns the lettering warm white. The bands stay Livery Burgundy, the route board stays Route Charcoal, and a 2px Signal Burgundy rule under the route board keeps it apart from the dark body.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper Stays Paper Rule",
+        "body": "The manga page is white paper and black ink in both services. It never takes the theme tokens.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Typeface Rule",
+        "body": "Bricolage Grotesque is the only face. Roles come from its axes (800 to paint, 78% width for caps, 400 to read), never from a second family.",
+        "section": "typography"
+      },
+      {
+        "name": "The Plain Line Under Rule",
+        "body": "A heading stands alone on the body with a short plain sentence under it. Nothing in caps sits above a heading; breadcrumbs are navigation, and dates are timetable data inside a route.",
+        "section": "typography"
+      },
+      {
+        "name": "The Timetable Numerals Rule",
+        "body": "Years, periods and dates use tabular numerals, so columns of stops line up.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lift Not Drop Rule",
+        "body": "Depth is a soft lift under boards, windows and buttons. No drop shade under lettering, no hard offset shadow, no stacked offset outline.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Solid Tint Rule",
+        "body": "Bus windows are opaque tinted frames. No backdrop-filter, blur or see-through panel anywhere.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One Moment Rule",
+        "body": "The grimoire float is the only motion that runs on its own. Everything else answers a hover, a press or a page change (state transitions of 0.2–0.7s and the view-transition cross-fade), and all of it stops under prefers-reduced-motion.",
+        "section": "components"
+      },
+      {
+        "name": "The Board Is For Reading Rule",
+        "body": "Long reading sits on a signboard; headings, single lines and the Writing list sit straight on the body.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "**Do** paint long reading on a signboard (Signboard White, 3px ink frame, inner 1px frame inset 5px, 6px corners) and keep headings painted straight on the body.",
+      "**Do** use Livery Burgundy (#6d1526) for surfaces (bands, strips, table heads, primary buttons, the contact stop) and Signal Burgundy (#8a1c33) for lines and marks only.",
+      "**Do** cut band edges and heavy rules from the 0.75rem stripe, and give every full-bleed band its 0.25rem pinstripe and 0.5rem gap.",
+      "**Do** put every photo and screenshot in a bus window: opaque Tinted Glass, 0.55rem seal, 18px outside and 11px on the glass.",
+      "**Do** set labels, stops, dates and table heads in board caps (700, 78% width, 0.07em, uppercase), and everything else in Bricolage Grotesque at its normal width.",
+      "**Do** light exactly one stop on the route board, with a 3px Signal Burgundy underline; the other stops stay Ghost Stop.",
+      "**Do** keep the route board Route Charcoal and the bands Livery Burgundy in night service; repaint only the body, the boards and the lettering.",
+      "**Do** keep the manga page white paper and black ink in both services.",
+      "**Do** keep the 3px focus outline offset 3px in the ink of its context, and stop every animation under prefers-reduced-motion.",
+      "**Do** give projects unequal weight: featured stops as window plus overlapping signboard, the rest in the timetable."
+    ],
+    "donts": [
+      "**Don't** use yellow, amber or gold anywhere in the chrome; the danfo's yellow was repainted grey and burgundy.",
+      "**Don't** use glass: no backdrop-filter, blur, or translucent panels. The bus window's opaque tint is the only glass this world has.",
+      "**Don't** put a drop shade (an offset text-shadow) under painted lettering, and don't use hard offset shadows; depth is the soft lift.",
+      "**Don't** show a location (town, city or country) in visible copy about Harrison; it stays in metadata for search.",
+      "**Don't** use official anime artwork. The clover and the grimoire are drawn for this site, and the manga panel takes only art Harrison has the rights to.",
+      "**Don't** put an eyebrow or kicker (a small caps label) above a heading.",
+      "**Don't** bring back the destination blind or any rolling, scrolling or animated sign on the route board.",
+      "**Don't** lay projects out as an equal grid of cards, and don't open with a code card on a dark developer page.",
+      "**Don't** add a second typeface; vary Bricolage Grotesque's weight and width instead."
+    ]
+  }
+}

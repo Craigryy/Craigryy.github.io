@@ -14,3 +14,10 @@ src/components/.env
 # misc
 .DS_Store
 npm-debug.log*
+
+# Impeccable (design skill): its tooling and working files stay local; PRODUCT.md, DESIGN.md,
+# .impeccable/design.json and .impeccable/surfaces/ are the parts worth keeping in the repo.
+.claude/
+.impeccable/*
+!.impeccable/design.json
+!.impeccable/surfaces/

@@ -2,7 +2,7 @@
   "name": "Harrison James",
   "fullName": "James Harrison Onoriode",
   "role": "Full-stack web developer",
-  "intro": "I build web apps with Python (Django, Flask, Wagtail) and JavaScript (React, Next.js), then ship them to production with Docker, Terraform and AWS. 2+ years of turning ideas into products people use, from Festac Town, Lagos.",
+  "intro": "I build web apps with Python (Django, Flask, Wagtail) and JavaScript (React, Next.js), then ship them to production with Docker, Terraform and AWS. 2+ years of turning ideas into products people use.",
   "location": {
     "area": "Festac Town",
     "city": "Lagos",
@@ -11,15 +11,6 @@
   },
   "email": "harriajames97@gmail.com",
   "cv": "/files/Harrison_James_CV.pdf",
-  "codeCard": [
-    "Python",
-    "Django",
-    "Wagtail",
-    "React",
-    "Next.js",
-    "Docker",
-    "AWS"
-  ],
   "socials": [
     {
       "network": "github",
@@ -47,6 +38,10 @@
       "url": "https://www.instagram.com/craigry__/"
     }
   ],
+  "anime": {
+    "line": "Not giving up is my magic.",
+    "art": []
+  },
   "seo": {
     "title": "Harrison James · Full-stack Web Developer in Lagos, Nigeria",
     "description": "Harrison James is a full-stack web developer in Festac Town, Lagos, Nigeria. Founder of SeeBlu and creator of Kinomos. Python, Django, React. Open to work.",

@@ -1,0 +1,196 @@
+---
+// "Off the clock": a manga panel with speed lines and a speech bubble, just before Contact.
+// Pictures come from the admin (Profile → Anime panel → Pictures, up to three, one per panel). Only art Harrison
+// has the rights to goes here; with none, the panel shows a black grimoire drawn for this site.
+import Grimoire from './Grimoire.astro';
+import profile from '../data/profile.json';
+import { url } from '../lib/url.js';
+
+const anime = profile.anime || {};
+const art = (anime.art || []).filter((a) => a?.image).slice(0, 3);
+const credits = art.map((a) => a.credit).filter(Boolean);
+
+// Inked speed lines: tapered wedges converging on the centre, each with its own gap, weight and length, the way a
+// manga artist rules them by hand. A fixed seed keeps the drawing the same on every build.
+let seed = 20240529;
+const rand = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+const at = (r, deg) => `${(r * Math.cos((deg * Math.PI) / 180)).toFixed(2)},${(r * Math.sin((deg * Math.PI) / 180)).toFixed(2)}`;
+const speedLines = [];
+for (let angle = rand() * 4; angle < 360; angle += 1.6 + rand() * 4.4) {
+  const inner = 44 + rand() * 30; // where the stroke tapers to nothing; the centre stays clear for the grimoire
+  const half = 0.25 + rand() * (rand() < 0.2 ? 2.2 : 1.1); // half the stroke's width at the frame, in degrees
+  speedLines.push(`${at(160, angle - half)} ${at(160, angle + half)} ${at(inner, angle)}`);
+}
+---
+<section class="section manga" aria-labelledby="manga-title">
+  <div class="container layout">
+    <div class="copy">
+      <h2 id="manga-title" class="paint">Off the clock</h2>
+      <p>Outside work I’m deep into Black Clover. Asta’s rule works for shipping software too: you don’t give up.</p>
+    </div>
+    <figure class:list={['page', `panels-${art.length || 1}`]}>
+      {art.length > 0 ? (
+        art.map((a) => (
+          <div class="panel">
+            <img src={url(a.image)} alt={a.alt || ''} loading="lazy" decoding="async" />
+          </div>
+        ))
+      ) : (
+        <div class="panel lines">
+          <svg class="speed" viewBox="-100 -100 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+            {speedLines.map((points) => <polygon points={points} />)}
+          </svg>
+          <Grimoire />
+        </div>
+      )}
+      {anime.line && <p class="bubble">{anime.line}</p>}
+      {credits.length > 0 && <figcaption>Art: {credits.join(' · ')}</figcaption>}
+    </figure>
+  </div>
+</section>
+
+<style>
+  .manga {
+    padding-block: clamp(3rem, 7vw, 5rem);
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .copy h2 {
+    font-size: clamp(2.1rem, 5.2vw, 3.6rem);
+  }
+
+  .copy p {
+    max-width: 30rem;
+    margin-top: 0.9rem;
+    color: var(--ground-muted);
+    font-size: 1.08rem;
+  }
+
+  /* The manga page: white paper, black panel borders, white gutters. Paper stays paper in night mode too. */
+  .page {
+    position: relative;
+    display: grid;
+    gap: 7px;
+    margin: 0;
+    padding: 7px;
+    border: 3px solid #181617;
+    background: #f7f5f2;
+    box-shadow: 0 22px 40px -28px rgb(0 0 0 / 0.6);
+  }
+
+  .panels-2 {
+    grid-template-columns: 1.25fr 1fr;
+  }
+
+  .panels-3 {
+    grid-template-columns: 1.3fr 1fr 1fr;
+  }
+
+  .panel {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: clamp(15rem, 30vw, 21rem);
+    overflow: hidden;
+    border: 3px solid #181617;
+    background: #ffffff;
+  }
+
+  .panel img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  /* Speed lines converging on the grimoire, clear in the middle, the way manga frames a reveal. */
+  .speed {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    fill: #181617;
+  }
+
+  .lines :global(.grimoire) {
+    position: relative;
+  }
+
+  /* The speech bubble, tail pointing down into the panel. */
+  .bubble {
+    position: absolute;
+    top: -1.4rem;
+    right: clamp(0.5rem, 3vw, 2rem);
+    z-index: 2;
+    max-width: 15rem;
+    padding: 0.85rem 1.2rem;
+    border: 3px solid #181617;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #181617;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+
+  .bubble::after {
+    content: '';
+    position: absolute;
+    left: 28%;
+    bottom: -1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    border-right: 3px solid #181617;
+    border-bottom: 3px solid #181617;
+    background: #ffffff;
+    transform: skewX(28deg) rotate(30deg);
+  }
+
+  figcaption {
+    grid-column: 1 / -1;
+    color: #5d5651;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 820px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+
+    .page {
+      margin-top: 1.5rem;
+    }
+
+    .panels-3 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .panels-3 .panel:first-child {
+      grid-column: 1 / -1;
+    }
+
+    /* Room above the grimoire for the bubble. */
+    .lines {
+      padding-top: 4.5rem;
+    }
+
+    .bubble {
+      top: -1.6rem;
+      right: 0.5rem;
+      max-width: 12rem;
+      padding: 0.65rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>

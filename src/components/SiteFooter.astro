@@ -1,4 +1,5 @@
 ---
+// The footer: the name, the socials, and how the site is built.
 import Icon from './Icon.astro';
 import AstroLogo from './AstroLogo.astro';
 import profile from '../data/profile.json';
@@ -6,70 +7,59 @@ import { socialIcon } from '../lib/socials.js';
 import { url } from '../lib/url.js';
 
 const year = new Date().getFullYear();
-const { area, city, country } = profile.location;
 ---
 <footer class="site-footer">
-  <div class="container">
-    <div class="top">
-      <div>
-        <p class="name">{profile.name}</p>
-        <p class="where">{profile.role} · {area}, {city}, {country}</p>
-      </div>
-      <ul class="socials">
-        {profile.socials.map((social) => (
-          <li>
-            <a href={social.url} target="_blank" rel="noopener me" aria-label={social.label}>
-              <Icon icon={socialIcon(social.network)} />
-            </a>
-          </li>
-        ))}
-      </ul>
+  <div class="container top">
+    <div class="who">
+      <p class="name">{profile.name}</p>
+      <p>{profile.role}</p>
     </div>
-    <div class="bottom">
-      <p>© {year} {profile.name}</p>
-      <p class="built">
-        <a href="https://astro.build" target="_blank" rel="noopener">Built with <AstroLogo /> Astro</a>
-        <span aria-hidden="true">·</span>
-        <span>Hosted on GitHub Pages</span>
-        <span aria-hidden="true">·</span>
-        <a href={url('about/#colophon')}>How this site works</a>
-      </p>
-    </div>
+    <ul class="socials">
+      {profile.socials.map((social) => (
+        <li>
+          <a href={social.url} target="_blank" rel="noopener me" aria-label={social.label}>
+            <Icon icon={socialIcon(social.network)} />
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="container bottom">
+    <p>© {year} {profile.name}</p>
+    <p class="built">
+      <a href="https://astro.build" target="_blank" rel="noopener">Built with <AstroLogo /> Astro</a>
+      <span aria-hidden="true">·</span>
+      <span>Hosted on GitHub Pages</span>
+      <span aria-hidden="true">·</span>
+      <a href={url('about/#colophon')}>How this site works</a>
+    </p>
   </div>
 </footer>
 
 <style>
   .site-footer {
-    border-top: 1px solid var(--line);
-    padding-block: 3rem 2.5rem;
-    color: var(--muted);
-    font-size: 0.92rem;
+    padding-block: clamp(2.5rem, 6vw, 3.5rem) 2rem;
+    color: var(--ground-muted);
+    font-size: 0.94rem;
   }
 
-  .top,
-  .bottom {
+  .top {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 1.25rem 2rem;
+    gap: 1.5rem 2rem;
   }
 
-  .bottom {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
+  .who {
+    flex: 1;
+    min-width: 14rem;
   }
 
   .name {
-    color: var(--ink);
+    color: var(--ground-ink);
+    font-weight: 800;
+    letter-spacing: -0.02em;
     font-size: 1.35rem;
-    font-weight: 700;
-    letter-spacing: -0.03em;
-  }
-
-  .where {
-    margin-top: 0.2rem;
   }
 
   .socials {
@@ -81,18 +71,28 @@ const { area, city, country } = profile.location;
   .socials a {
     display: grid;
     place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 1px solid var(--line-strong);
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 2px solid var(--ground-ink);
     border-radius: 50%;
-    color: var(--ink);
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    color: var(--ground-ink);
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .socials a:hover {
-    background: var(--ink);
-    color: var(--bg);
+    background: var(--ground-ink);
+    color: var(--ground);
     transform: translateY(-2px);
+  }
+
+  .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--ground-rule);
   }
 
   .built {
@@ -106,14 +106,13 @@ const { area, city, country } = profile.location;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    color: var(--ink-2);
-    text-decoration: none;
+    color: var(--ground-ink);
+    font-weight: 600;
+    text-decoration: underline;
   }
 
   .built a:hover {
-    color: var(--ink);
-    text-decoration: underline;
-    text-underline-offset: 3px;
+    text-decoration-color: var(--shade);
   }
 
   .built :global(.astro-logo) {

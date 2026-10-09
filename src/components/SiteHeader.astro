@@ -1,54 +1,57 @@
 ---
-import { Image } from 'astro:assets';
+// The route board: always charcoal, lit letters. The stop you're on is lit and the rest are ghosted; on the home page
+// the lit stop follows the section you're reading.
 import Icon from './Icon.astro';
+import Clover from './Clover.astro';
 import { faMoon, faSun, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
-import photo from '../images/profile.jpg';
 import profile from '../data/profile.json';
 import { url } from '../lib/url.js';
 
-const links = [
-  { href: url('#work'), label: 'Work' },
-  { href: url('#stack'), label: 'Stack' },
-  { href: url('#journey'), label: 'Journey' },
-  { href: url('#writing'), label: 'Writing' },
-  { href: url('about/'), label: 'About' },
+// `stop` lights one stop on pages that aren't the home page.
+const { stop = '' } = Astro.props;
+const stops = [
+  { id: 'work', href: url('#work'), label: 'Work' },
+  { id: 'stack', href: url('#stack'), label: 'Stack' },
+  { id: 'journey', href: url('#journey'), label: 'Journey' },
+  { id: 'writing', href: url('#writing'), label: 'Writing' },
+  { id: 'about', href: url('about/'), label: 'About' },
 ];
-const here = Astro.url.pathname;
 ---
-<header class="site-header">
+<header class="route-board">
   <div class="container bar">
-    <a class="brand" href={url()} aria-label={`${profile.name}, home`}>
-      <Image src={photo} alt="" width={72} height={72} loading="eager" />
-      <span>
-        <strong>{profile.name}</strong>
-        <small class="mono">{profile.role.toLowerCase()}</small>
-      </span>
+    <a class="plate" href={url()} aria-label={`${profile.name}, home`}>
+      <Clover size="1.55rem" />
+      <span class="plate-name">{profile.name}</span>
     </a>
 
-    <nav class="nav" aria-label="Main">
-      <ul>
-        {links.map((link) => (
-          <li><a href={link.href} aria-current={link.href === here ? 'page' : undefined}>{link.label}</a></li>
+    <nav class="stops" aria-label="Main">
+      <ol>
+        {stops.map((s) => (
+          <li>
+            <a href={s.href} data-stop-link={s.id} class:list={{ lit: s.id === stop }} aria-current={s.id === stop ? 'page' : undefined}>
+              {s.label}
+            </a>
+          </li>
         ))}
-      </ul>
+      </ol>
     </nav>
 
-    <div class="actions">
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch between light and dark">
+    <div class="controls">
+      <button class="round" type="button" data-theme-toggle aria-label="Switch between day and night colours">
         <span class="moon"><Icon icon={faMoon} /></span>
         <span class="sun"><Icon icon={faSun} /></span>
       </button>
-      <a class="btn btn-primary btn-sm hire" href={url('#contact')}>Hire me</a>
+      <a class="hire" href={url('#contact')}>Hire me</a>
       <details class="menu" data-menu>
-        <summary aria-label="Menu">
+        <summary class="round" aria-label="Menu">
           <span class="open"><Icon icon={faBars} /></span>
           <span class="close"><Icon icon={faXmark} /></span>
         </summary>
         <div class="menu-panel">
-          <ul>
-            {links.map((link) => <li><a href={link.href}>{link.label}</a></li>)}
+          <ol>
+            {stops.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
             <li><a href={url('#contact')}>Contact</a></li>
-          </ul>
+          </ol>
         </div>
       </details>
     </div>
@@ -56,7 +59,7 @@ const here = Astro.url.pathname;
 </header>
 
 <script>
-  // Theme switch: remembers the choice on this device.
+  // Day / night colours: remembers the choice on this device.
   document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => {
     const root = document.documentElement;
     const dark = root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
@@ -80,103 +83,160 @@ const here = Astro.url.pathname;
       if (!menu.contains(event.target as Node)) menu.open = false;
     });
   }
+
+  // On the home page, light the stop for the section you're reading.
+  const sections = [...document.querySelectorAll<HTMLElement>('[data-stop]')];
+  if (sections.length) {
+    const links = [...document.querySelectorAll<HTMLAnchorElement>('[data-stop-link]')];
+    const light = (id: string) =>
+      links.forEach((a) => {
+        const on = a.dataset.stopLink === id;
+        a.classList.toggle('lit', on);
+        if (on) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    const watcher = new IntersectionObserver(
+      (entries) => {
+        const seen = entries.filter((e) => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        if (seen) light(seen.target.getAttribute('data-stop')!);
+      },
+      { rootMargin: '-45% 0px -50% 0px' },
+    );
+    sections.forEach((s) => watcher.observe(s));
+  }
 </script>
 
 <style>
-  .site-header {
+  .route-board {
     position: sticky;
     top: 0;
     z-index: 50;
-    border-bottom: 1px solid var(--line);
-    background: color-mix(in srgb, var(--bg) 82%, transparent);
-    backdrop-filter: saturate(1.4) blur(14px);
-    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    background: var(--route);
+    color: #ffffff;
+    --focus: var(--route-lit);
+  }
+
+  /* Night service: a burgundy rule under the board keeps it apart from the dark body. */
+  .route-board::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 2px;
+    background: var(--route-accent);
+    opacity: 0;
+  }
+
+  :global(:root[data-theme='dark']) .route-board::after {
+    opacity: 1;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :global(:root:not([data-theme='light'])) .route-board::after {
+      opacity: 1;
+    }
   }
 
   .bar {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
     min-height: 4.25rem;
   }
 
-  .brand {
-    display: flex;
+  .plate {
+    display: inline-flex;
     align-items: center;
-    gap: 0.7rem;
-    min-width: 0;
+    gap: 0.6rem;
+    color: var(--route-lit);
     text-decoration: none;
   }
 
-  .brand img {
-    width: 2.35rem;
-    height: 2.35rem;
-    border-radius: 50%;
-    object-fit: cover;
-    box-shadow: 0 0 0 2px var(--bg), 0 0 0 3px var(--line-strong);
-  }
-
-  .brand span {
-    display: grid;
-    line-height: 1.2;
-  }
-
-  .brand strong {
-    font-size: 0.98rem;
-    letter-spacing: -0.01em;
-  }
-
-  .brand small {
-    color: var(--muted);
-    font-size: 0.7rem;
+  .plate-name {
+    color: #ffffff;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    font-size: 1.05rem;
+    letter-spacing: 0.01em;
     white-space: nowrap;
   }
 
-  .nav {
+  .stops {
     margin-left: auto;
   }
 
-  .nav ul {
+  .stops ol {
     display: flex;
-    gap: 0.25rem;
+    gap: 0.15rem;
     list-style: none;
   }
 
-  .nav a {
+  .stops a {
     display: block;
-    padding: 0.45rem 0.75rem;
-    border-radius: 999px;
-    color: var(--ink-2);
-    font-size: 0.93rem;
-    font-weight: 500;
+    padding: 0.5rem 0.7rem;
+    color: var(--route-ghost);
+    font-stretch: 78%;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
   }
 
-  .nav a:hover,
-  .nav a[aria-current='page'] {
-    background: var(--bg-2);
-    color: var(--ink);
+  .stops a:hover,
+  .stops a.lit {
+    color: var(--route-lit);
   }
 
-  .actions {
+  .stops a.lit {
+    text-decoration: underline;
+    text-decoration-color: var(--route-accent);
+    text-decoration-thickness: 3px;
+    text-underline-offset: 0.5em;
+  }
+
+  .controls {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
 
-  .theme-toggle,
-  .menu summary {
+  .round {
     display: grid;
     place-items: center;
     width: 2.4rem;
     height: 2.4rem;
-    border: 1px solid var(--line-strong);
+    border: 1px solid rgb(255 255 255 / 0.28);
     border-radius: 50%;
     background: transparent;
-    color: var(--ink);
+    color: #ffffff;
     font-size: 0.95rem;
     cursor: pointer;
+  }
+
+  .round:hover {
+    border-color: var(--route-lit);
+    color: var(--route-lit);
+  }
+
+  .hire {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    background: var(--route-accent);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .hire:hover {
+    transform: translateY(-2px);
   }
 
   .sun,
@@ -223,37 +283,39 @@ const here = Astro.url.pathname;
   .menu-panel {
     position: absolute;
     right: 0;
-    top: calc(100% + 0.6rem);
-    min-width: 12rem;
-    padding: 0.5rem;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: var(--surface);
-    box-shadow: var(--shadow);
+    top: calc(100% + 0.75rem);
+    min-width: 13rem;
+    padding: 0.4rem;
+    border-radius: var(--radius);
+    background: var(--route);
+    box-shadow: inset 0 0 0 1px rgb(242 237 230 / 0.18), 0 18px 30px -12px rgb(0 0 0 / 0.6);
   }
 
-  .menu-panel ul {
+  .menu-panel ol {
     list-style: none;
   }
 
   .menu-panel a {
     display: block;
-    padding: 0.7rem 0.85rem;
-    border-radius: 10px;
-    font-weight: 500;
+    padding: 0.75rem 0.9rem;
+    color: var(--route-lit);
+    font-stretch: 78%;
+    font-weight: 700;
+    letter-spacing: 0.07em;
     text-decoration: none;
+    text-transform: uppercase;
   }
 
   .menu-panel a:hover {
-    background: var(--bg-2);
+    background: rgb(242 237 230 / 0.08);
   }
 
-  @media (max-width: 860px) {
-    .nav {
+  @media (max-width: 980px) {
+    .stops {
       display: none;
     }
 
-    .actions {
+    .controls {
       margin-left: auto;
     }
 
@@ -262,10 +324,10 @@ const here = Astro.url.pathname;
     }
   }
 
-  /* Small phones: the photo stays, the name moves out of the way of "Hire me" (it is big in the hero). */
-  @media (max-width: 420px) {
-    .brand span {
+  @media (max-width: 380px) {
+    .plate-name {
       display: none;
     }
   }
+
 </style>

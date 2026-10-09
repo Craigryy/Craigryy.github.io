@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
+import Timetable from '../../components/Timetable.astro';
 import profile from '../../data/profile.json';
 import { getProjects, projectPath } from '../../lib/projects.js';
 import { absolute } from '../../lib/url.js';
@@ -9,7 +9,7 @@ import { graph, person, breadcrumbs, personId } from '../../lib/schema.js';
 const projects = await getProjects();
 const { city, country } = profile.location;
 const title = `Projects · ${profile.name}, ${profile.role.toLowerCase()} in ${city}`;
-const description = `${projects.length} web apps and tools built by ${profile.name}, a ${profile.role.toLowerCase()} in ${city}, ${country}: ${projects.map((p) => p.data.title).join(', ')}.`;
+const description = `A selection of web apps and tools built by ${profile.name}, a ${profile.role.toLowerCase()} in ${city}, ${country}: ${projects.map((p) => p.data.title).join(', ')}.`;
 
 const schema = graph(await person(), breadcrumbs([['Home', ''], ['Projects', 'projects/']]), {
   '@type': 'CollectionPage',
@@ -22,32 +22,22 @@ const schema = graph(await person(), breadcrumbs([['Home', ''], ['Projects', 'pr
   },
 });
 ---
-<Base title={title} description={description} schema={schema}>
+<Base title={title} description={description} schema={schema} stop="work">
   <section class="section">
     <div class="container">
-      <div class="section-head">
+      <div class="section-sign">
         <div>
-          <span class="index">Work / {String(projects.length).padStart(2, '0')}</span>
-          <h1>Everything I’ve built</h1>
-          <p>Open any project for the full story: what it does, how I built it and where it runs.</p>
+          <h1 class="paint">Some of what I’ve built</h1>
+          <p>A selection of my projects. Open any of them for the full story: what it does, how I built it and where it runs.</p>
         </div>
       </div>
-      <div class="grid">
-        {projects.map((project, index) => <ProjectCard project={project} eager={index < 2} />)}
-      </div>
+      <Timetable projects={projects} caption="Selected projects" thumbs />
     </div>
   </section>
 </Base>
 
 <style>
   h1 {
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    letter-spacing: -0.045em;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-    gap: 1.25rem;
+    font-size: clamp(2.5rem, 6.5vw, 4.5rem);
   }
 </style>

@@ -1,0 +1,49 @@
+---
+// A five-leaf clover decal, drawn for this site (no official artwork). Five heart-shaped leaves around a centre,
+// like a vinyl sticker on a danfo window. Colours follow currentColor; `outline` adds the sticker's cut line.
+const { size = '1em', outline = false, class: className = '', label } = Astro.props;
+const leaf = 'M0 2.6 C -4.6 -2.4 -9.8 -8.6 -6.6 -14.6 C -4.9 -17.4 -1.4 -17.2 0 -14.4 C 1.4 -17.2 4.9 -17.4 6.6 -14.6 C 9.8 -8.6 4.6 -2.4 0 2.6 Z';
+const angles = [0, 72, 144, 216, 288];
+---
+<svg
+  class:list={['clover', className]}
+  viewBox="-20 -20 40 40"
+  width={size}
+  height={size}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  focusable="false"
+>
+  {outline && (
+    <g class="cut" fill="none" stroke-width="3.4" stroke-linejoin="round">
+      {angles.map((a) => <path d={leaf} transform={`rotate(${a})`} />)}
+    </g>
+  )}
+  <g fill="currentColor">
+    {angles.map((a) => <path d={leaf} transform={`rotate(${a})`} />)}
+    <circle r="4.2" />
+  </g>
+  <g class="veins" stroke-width="1.1" stroke-linecap="round">
+    {angles.map((a) => <path d="M0 -3.2 L0 -12.6" transform={`rotate(${a})`} />)}
+  </g>
+  <path d="M0 1.5 C 1 6 4 10 8.5 13.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+</svg>
+
+<style>
+  .clover {
+    display: inline-block;
+    flex: none;
+    overflow: visible;
+  }
+
+  .cut {
+    stroke: var(--clover-cut, #ffffff);
+  }
+
+  /* The crease down each leaf, what makes it read as clover rather than a flower. */
+  .veins {
+    stroke: var(--clover-cut, #ffffff);
+    opacity: 0.55;
+  }
+</style>
