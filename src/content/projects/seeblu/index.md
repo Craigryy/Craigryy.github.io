@@ -1,7 +1,7 @@
 ---
 title: SeeBlu
 tagline: A TikTok-style app for meeting people in Nigeria through short videos, photos and one tap to connect
-role: Founder
+role: lead developer
 year: 2026
 url: https://seeblu.onrender.com
 image: cover.png
@@ -21,6 +21,7 @@ stack:
   - DigitalOcean
 featured: true
 order: 1
+draft: false
 ---
 
 SeeBlu is a meet-and-connect platform. People choose what they're there for (friendship, a relationship,
