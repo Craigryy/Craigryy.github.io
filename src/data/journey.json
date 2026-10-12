@@ -1,9 +1,18 @@
 {
   "experience": [
     {
+      "role": "Freelance web developer",
+      "org": "Self-employed",
+      "place": "Remote",
+      "period": "Oct 2023 – Present",
+      "points": [
+        "Websites and web apps for businesses, built with Django, React and Next.js, with attention to speed, security and hosting."
+      ]
+    },
+    {
       "role": "Data Analyst Intern",
       "org": "Heritage Energy Operational Services Ltd",
-      "place": "Lagos, Nigeria",
+      "place": "Warri, Delta State",
       "period": "Jul 2021 – Jan 2022",
       "points": [
         "Helped the senior data analyst analyse oil and water samples from the field.",
@@ -13,7 +22,7 @@
     }
   ],
   "education": [
-    { "title": "BSc Biochemistry", "org": "Delta State University, Abraka", "period": "Dec 2018 – Mar 2023", "note": "CGPA 4.0 / 5" },
+    { "title": "BSc Biochemistry", "org": "Delta State University, Abraka", "period": "2018 – 2021", "note": "CGPA 4.0 / 5" },
     { "title": "The Complete Web Development Bootcamp", "org": "Udemy", "period": "Apr 2023 – Jul 2023", "note": "" },
     { "title": "The Complete Python Pro Bootcamp", "org": "Udemy", "period": "Jan 2023 – Mar 2023", "note": "" }
   ],

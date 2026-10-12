@@ -1,8 +1,8 @@
 {
   "name": "Harrison James",
   "fullName": "James Harrison Onoriode",
-  "role": "Full-stack web developer",
-  "intro": "I build web apps with Python (Django, Flask, Wagtail) and JavaScript (React, Next.js), then ship them to production with Docker, Terraform and AWS. 2+ years of turning ideas into products people use.",
+  "role": "Backend engineer",
+  "intro": "I build web products with Python, Django and PostgreSQL: payments, APIs, background jobs and the tests that keep them working. I ship them with Docker to DigitalOcean and AWS, and build the front end in React or Next.js when a project needs one. 3 years of turning ideas into products people use.",
   "location": {
     "area": "Festac Town",
     "city": "Lagos",
@@ -43,12 +43,13 @@
     "art": []
   },
   "seo": {
-    "title": "Harrison James · Full-stack Web Developer in Lagos, Nigeria",
-    "description": "Harrison James, full-stack web developer in Festac, Lagos. Co-founder and lead developer of Kinomos, lead developer of SeeBlu. Python, Django, PostgreSQL.",
+    "title": "Harrison James · Backend Engineer (Python, Django) in Lagos, Nigeria",
+    "description": "Harrison James, backend engineer in Lagos, Nigeria: Python, Django, PostgreSQL. Co-founder and lead developer of Kinomos, lead developer of SeeBlu. Open to remote roles.",
     "keywords": [
       "web developer in Nigeria",
       "web developer in Lagos",
-      "web developer in Festac",
+      "backend engineer Lagos",
+      "backend developer Nigeria",
       "full-stack developer Lagos",
       "Django developer Nigeria",
       "Python developer Lagos",

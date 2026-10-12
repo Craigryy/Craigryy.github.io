@@ -1,7 +1,7 @@
 ---
 title: Kinomos
 tagline: A business discovery and directory platform
-role: Lead Developer
+role: Co-founder & Lead Developer
 year: 2026
 url: https://kinomos.com
 image: cover.png
