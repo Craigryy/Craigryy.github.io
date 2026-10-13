@@ -4,14 +4,14 @@ description: The person behind the code. Church, travel, football and the projec
 spotify: https://open.spotify.com/embed/playlist/37i9dQZF1DXdrxKdrXE2Vk
 ---
 
-I love spending time with others, whether it's hanging out with friends or taking part in fellowship at my local
-church. The connections I make through these gatherings are some of the most meaningful parts of my life.
+Away from the screen, I'm happiest around people — friends, or fellowship at my local church. That's where I do my
+best thinking, and where a lot of the energy to keep building comes from.
 
-In my free time, I enjoy travelling. Exploring new cities, meeting new people and experiencing different cultures has
-given me a broader perspective on life. One of my favourite trips was a visit to Ghana.
+When I can, I travel. New cities, new people, food I haven't tried before — it resets how I see things. Ghana is still
+my favourite trip so far.
 
-I'm a huge football fan, and my passion for the sport runs deep. Real Madrid is my team, and their dedication inspires
-me every time I watch them play. Football is a reminder of hard work, teamwork and joy.
+I support Real Madrid, and I watch closely. Football is the clearest reminder I know that steady work and a team that
+trusts each other beat raw talent on its own.
 
-I'm pretty active on X (Twitter), especially when I'm sharing snippets of my work and design progress. If you want to
-keep up with my latest projects, insights and the occasional dose of football, give me a follow!
+I'm most active on X, where I post what I'm building and how a design is coming along. If you want the work-in-progress
+— and the odd football take — that's where to find me.
