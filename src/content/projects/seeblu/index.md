@@ -58,10 +58,16 @@ existing cluster. No new server and no new database to pay for.
 That left the pages. Both GitHub Pages and Cloudflare Pages host a static site for free, so I compared the two and
 went with Cloudflare:
 
+- **HTTPS that looks after itself.** Cloudflare issues the SSL certificate and renews it on its own, so the site
+  can't go down because a certificate expired. I wanted the same on the API side, so a daily job renews
+  its certificate and only reloads the server when something actually changed.
 - **Security headers.** Cloudflare lets me set my own, including a strict Content-Security-Policy. GitHub Pages
   doesn't let you set headers.
+- **Private code.** The SeeBlu repo is private, and GitHub Pages only publishes private repos on a paid plan.
 - **Redirect rules** that send paths like `/media/` straight to the API.
 - **Turnstile**, the bot check on sign-up and login, is Cloudflare's too.
+- **Smaller things:** no bandwidth cap on the free plan (GitHub Pages has a soft limit of 100 GB a month), and
+  pages are served from Cloudflare's network close to the visitor.
 
 ### Rebuilding every page
 
