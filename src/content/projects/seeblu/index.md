@@ -14,10 +14,10 @@ stack:
   - Web Push
   - ffmpeg
   - Cloudflare Turnstile
+  - Paystack
   - Docker
+  - Nginx
   - Cloudflare Pages
-  - Terraform
-  - Ansible
   - DigitalOcean
 featured: true
 order: 1
@@ -88,6 +88,3 @@ address has a real file behind it.
 
 If you already have a backend, put the next app's pages on a static host and point them at it. It added nothing
 to my hosting bill.
-
-The repo still has a Terraform and Ansible setup for a dedicated DigitalOcean server, for when SeeBlu outgrows the
-shared one.
