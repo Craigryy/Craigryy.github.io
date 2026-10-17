@@ -3,7 +3,7 @@ title: SeeBlu
 tagline: A TikTok-style app for meeting people in Nigeria through short videos, photos and one tap to connect
 role: lead developer
 year: 2026
-url: https://seeblu.onrender.com
+url: https://seeblu.pages.dev
 image: cover.png
 alt: SeeBlu's About page, "Meet people. Connect for real."
 stack:
@@ -15,7 +15,7 @@ stack:
   - ffmpeg
   - Cloudflare Turnstile
   - Docker
-  - Render
+  - Cloudflare Pages
   - Terraform
   - Ansible
   - DigitalOcean
@@ -44,6 +44,44 @@ I founded it and built it end to end, from the product and the design to the ser
 
 ## How it runs
 
-Django 5 and Wagtail 7 on PostgreSQL. Uploads and voice notes are checked by file signature before they are
-stored. It runs on Render today. For production, the repo includes a DigitalOcean setup: Terraform creates the
-servers, Ansible configures them and GitHub Actions deploys on every merge.
+SeeBlu is two parts: a static site on Cloudflare Pages that people open, and a Django API on a server I already
+had. The API is Django 5 and Wagtail 7 on PostgreSQL, and uploads and voice notes are checked by file signature
+before they are stored.
+
+### Why I split it
+
+It came down to cost. I didn't want to pay for a new server and a new database for an app that's still in
+testing. Kinomos already runs on a DigitalOcean droplet with a managed PostgreSQL cluster, so I looked into reusing
+that backend. SeeBlu's API now runs in its own container on the same droplet, with its own database inside the
+existing cluster. No new server and no new database to pay for.
+
+That left the pages. Both GitHub Pages and Cloudflare Pages host a static site for free, so I compared the two and
+went with Cloudflare:
+
+- **Security headers.** Cloudflare lets me set my own, including a strict Content-Security-Policy. GitHub Pages
+  doesn't let you set headers.
+- **Redirect rules** that send paths like `/media/` straight to the API.
+- **Turnstile**, the bot check on sign-up and login, is Cloudflare's too.
+
+### Rebuilding every page
+
+My first try was a hand-written login page, and it didn't look like the real one. So I changed approach: a build
+command renders every static page from the same Django templates the server uses, so the static site and the app
+show exactly the same thing. Pages that change per person load live through the API.
+
+I kept security in view the whole way:
+
+- The session travels in a request header, not a cookie, so another website can't make requests as a signed-in
+  member.
+- No inline scripts, so the Content-Security-Policy can block anything injected.
+- Bots meet Turnstile on sign-up and login, plus rate limits per network and per account.
+- Photos that aren't public yet load through short-lived signed links.
+
+One thing caught me out: Cloudflare kept serving an old copy of a page I had removed, from its cache. Now every
+address has a real file behind it.
+
+If you already have a backend, put the next app's pages on a static host and point them at it. It added nothing
+to my hosting bill.
+
+The repo still has a Terraform and Ansible setup for a dedicated DigitalOcean server, for when SeeBlu outgrows the
+shared one.
