@@ -3,7 +3,7 @@ title: SeeBlu
 tagline: A TikTok-style app for meeting people in Nigeria through short videos, photos and one tap to connect
 role: lead developer
 year: 2026
-url: https://seeblu.pages.dev
+url: https://seeblu.ng
 image: cover.png
 alt: SeeBlu's About page, "Meet people. Connect for real."
 stack:

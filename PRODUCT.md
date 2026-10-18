@@ -49,7 +49,7 @@ He ships whole products, from idea to live product with real users: lead develop
 
 ## Evidence on Hand
 
-- Projects with screenshots and write-ups in `src/content/projects/`: SeeBlu (live at https://seeblu.onrender.com), Kinomos (https://kinomos.com), Scriptures and Power (https://scripturesandpower.com), Pycam, Recipes API, Halo, Assemble.
+- Projects with screenshots and write-ups in `src/content/projects/`: SeeBlu (live at https://seeblu.ng), Kinomos (https://kinomos.com), Scriptures and Power (https://scripturesandpower.com), Pycam, Recipes API, Halo, Assemble.
 - CV: `public/files/Harrison_James_CV.pdf`. Photo: `src/images/profile.jpg`. Medium articles: `src/data/writing.json`.
 - Experience: Heritage Energy intern (2021–2022). Education: BSc Biochemistry, Delta State University, Abraka; Udemy courses. Reference: Samuel James.
 - There are no testimonials, client logos, user counts or performance metrics. Do not invent any.
