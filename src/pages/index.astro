@@ -51,7 +51,7 @@ const schema = graph(
       </div>
       <ol class="featured">
         {featured.map((project, index) => (
-          <li><ProjectCard project={project} flip={index % 2 === 1} eager={index === 0} /></li>
+          <li style={`--n: ${index}`}><ProjectCard project={project} flip={index % 2 === 1} eager={index === 0} /></li>
         ))}
       </ol>
       {others.length > 0 && (
@@ -70,15 +70,118 @@ const schema = graph(
   <Contact />
 </Base>
 
+<script>
+  // Cards under the deck shrink and dim a little as the next one covers them.
+  const cards = [...document.querySelectorAll<HTMLElement>('.featured > li')];
+  if (cards.length > 1 && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const update = () => {
+      cards.forEach((card, i) => {
+        const next = cards[i + 1];
+        if (!next) return;
+        const covered = card.getBoundingClientRect().bottom - next.getBoundingClientRect().top;
+        const p = Math.max(0, Math.min(1, covered / card.offsetHeight));
+        card.style.setProperty('--shrink', String(1 - p * 0.06));
+        card.style.setProperty('--dim', String(1 - p * 0.35));
+      });
+    };
+    addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    update();
+  }
+</script>
+
 <style>
   #work {
     padding-top: clamp(3.5rem, 7vw, 5.5rem);
   }
 
+  /* Stacked deck: each project card sticks under the header and the next one slides up over it. */
   .featured {
     display: grid;
-    gap: clamp(3rem, 7vw, 5rem);
+    gap: clamp(2rem, 6vh, 4rem);
     list-style: none;
+  }
+
+  .featured > li {
+    position: sticky;
+    top: calc(5.5rem + var(--n) * 1.1rem);
+    transform-origin: 50% 0;
+    scale: var(--shrink, 1);
+    filter: brightness(var(--dim, 1));
+  }
+
+  .featured :global(.stop),
+  .featured :global(.stop.flip) {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: stretch;
+    overflow: hidden;
+    border-radius: 28px;
+    background: var(--board, #f6f3ee);
+    box-shadow: 0 -12px 40px -18px rgb(0 0 0 / 0.45);
+  }
+
+  .featured :global(.stop .shot),
+  .featured :global(.stop.flip .shot) {
+    grid-column: 1;
+    display: grid;
+    place-items: center;
+    padding: clamp(1rem, 3vw, 2rem);
+    border: 0;
+    border-radius: 0;
+    background: color-mix(in srgb, var(--ground) 60%, #fff);
+    box-shadow: none;
+  }
+
+  .featured :global(.stop .shot img) {
+    border-radius: 10px;
+    box-shadow: 0 14px 30px -18px rgb(0 0 0 / 0.6);
+  }
+
+  .featured :global(.stop .sign),
+  .featured :global(.stop.flip .sign) {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--window, #1b1a1c);
+    color: #fff;
+    box-shadow: none;
+    --board-muted: rgb(255 255 255 / 0.72);
+  }
+
+  .featured :global(.stop .sign *) {
+    color: inherit;
+    border-color: rgb(255 255 255 / 0.35);
+  }
+
+  .featured :global(.stop .sign .more) {
+    background: transparent;
+  }
+
+  .featured :global(.stop .sign .btn) {
+    color: var(--band-ink);
+  }
+
+  @media (max-width: 900px) {
+    .featured > li {
+      top: calc(4.75rem + var(--n) * 0.8rem);
+    }
+
+    .featured :global(.stop),
+    .featured :global(.stop.flip) {
+      grid-template-columns: 1fr;
+    }
+
+    .featured :global(.stop .sign),
+    .featured :global(.stop.flip .sign) {
+      grid-column: 1;
+      grid-row: 2;
+      margin: 0;
+      padding: 1.6rem 1.5rem 1.8rem;
+    }
   }
 
   .more {

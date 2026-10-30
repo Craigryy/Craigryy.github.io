@@ -1,6 +1,6 @@
 ---
-// The first stop: the name painted on the body, the two calls (email, CV), the photo in a window with the
-// back-window sticker, and the burgundy livery band carrying the roles ("Lead developer of SeeBlu").
+// The first screen: the ID badge swinging on its strap with the role either side, then the name, the two calls
+// (email, CV) and the burgundy livery band carrying the roles ("Lead developer of SeeBlu").
 import { Image } from 'astro:assets';
 import Icon from './Icon.astro';
 import Clover from './Clover.astro';
@@ -33,25 +33,40 @@ const titles = titlesOf(projects);
       </ul>
     </div>
 
-    <figure class="driver">
-      <div class="glass">
-        <Image src={photo} alt={`${profile.name}`} widths={[320, 480, 720]} sizes="(max-width: 860px) 60vw, 330px" loading="eager" fetchpriority="high" />
+    <!-- The ID badge: hangs on a strap, drops in and swings; tap it to knock it back, or drag it. -->
+    <div class="badge-stage" aria-label={`${profile.name}, ${profile.role}`}>
+      <p class="badge-word left" aria-hidden="true">{profile.role.split(' ')[0]}</p>
+      <p class="badge-word right" aria-hidden="true">{profile.role.split(' ').slice(1).join(' ') || 'Engineer'}</p>
+      <div class="badge-swing">
+        <span class="strap" aria-hidden="true"></span>
+        <span class="clip" aria-hidden="true"></span>
+        <button class="badge" type="button" aria-label="Swing my ID card">
+          <span class="face front">
+            <span class="slot" aria-hidden="true"></span>
+            <Image src={photo} alt={`${profile.name}`} widths={[320, 480, 720]} sizes="230px" loading="eager" fetchpriority="high" />
+            <span class="badge-name">{profile.name}</span>
+            <span class="badge-role">{profile.role} · {profile.location.city}</span>
+            <span class="barcode" aria-hidden="true"></span>
+          </span>
+        </button>
       </div>
-      <figcaption class="vinyl">Surpass your limits. Right here, right now.</figcaption>
-      <Clover class="decal" size="3.4rem" outline />
-    </figure>
+    </div>
   </div>
 
   {titles.length > 0 && (
     <div class="band">
-      <ul class="container slogans" aria-label="Roles">
-        {titles.map(({ project, text }) => (
-          <li>
-            <Clover class="mark" size="1.15rem" />
-            <a class="paint-plain" href={projectUrl(project)}>{text}</a>
-          </li>
+      <div class="marquee">
+        {[false, true].map((copy) => (
+          <ul class="slogans" aria-label={copy ? undefined : 'Roles'} aria-hidden={copy ? 'true' : undefined}>
+            {titles.map(({ project, text }) => (
+              <li>
+                <Clover class="mark" size="1.15rem" />
+                <a class="paint-plain" href={projectUrl(project)} tabindex={copy ? -1 : undefined}>{text}</a>
+              </li>
+            ))}
+          </ul>
         ))}
-      </ul>
+      </div>
     </div>
   )}
 </section>
@@ -117,45 +132,139 @@ const titles = titlesOf(projects);
     text-decoration: underline;
   }
 
-  /* The driver's window: photo behind glass, the motto as white vinyl on the lower rim, a clover decal stuck on. */
-  .driver {
+  /* The ID badge on its strap. */
+  /* The badge takes the whole first screen; the introduction follows below it. */
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .badge-stage {
     position: relative;
-    margin: 0;
-    padding: 0.6rem 0.6rem 0;
-    border-radius: 22px 22px 14px 14px;
-    background: var(--window);
-    box-shadow: 0 26px 44px -30px rgb(0 0 0 / 0.75);
-  }
-
-  .glass {
+    order: -1;
+    display: grid;
+    justify-items: center;
+    align-content: start;
+    min-height: calc(100svh - 4.5rem);
+    margin-top: calc(-1 * clamp(2.5rem, 6vw, 4.5rem));
     overflow: hidden;
-    border-radius: 15px 15px 6px 6px;
   }
 
-  .glass img {
+  .badge-word {
+    position: absolute;
+    z-index: 2;
+    margin: 0;
+    font-size: clamp(1.8rem, 6vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .badge-word.left { top: 7vh; right: calc(50% + 1.4rem); }
+  .badge-word.right { top: calc(7vh + 0.9em); left: calc(50% + 1.4rem); color: var(--band); }
+
+  .badge-swing {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    transform-origin: 50% 0;
+    rotate: var(--swing, 0deg);
+    animation: badge-drop 1.1s cubic-bezier(0.34, 1.4, 0.64, 1) both;
+  }
+
+  .strap {
+    width: 1.1rem;
+    height: 26vh;
+    background: linear-gradient(90deg, var(--band), color-mix(in srgb, var(--band) 70%, #fff) 50%, var(--band));
+  }
+
+  .clip {
+    width: 3rem;
+    height: 1.1rem;
+    margin-top: -0.4rem;
+    border-radius: 6px;
+    background: linear-gradient(#cfcfd4, #8b8b93);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 0.35);
+  }
+
+  .badge {
+    position: relative;
+    width: clamp(14rem, 22vw, 18rem);
+    aspect-ratio: 5 / 7.4;
+    margin-top: -0.2rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: grab;
+    perspective: 900px;
+    touch-action: none;
+    font: inherit;
+  }
+
+  .badge:active { cursor: grabbing; }
+
+  .face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.6rem 1rem 1rem;
+    border: 1px solid rgb(255 255 255 / 0.12);
+    border-radius: 16px;
+    background: linear-gradient(160deg, #3a1f27, #1b1a1c 70%);
+    color: #fff;
+    text-align: left;
+    box-shadow: 0 30px 50px -25px rgb(0 0 0 / 0.8);
+    backface-visibility: hidden;
+    transition: transform 0.7s cubic-bezier(0.34, 1.3, 0.64, 1);
+  }
+
+  .slot {
+    position: absolute;
+    top: 0.55rem;
+    left: 50%;
+    width: 2.6rem;
+    height: 0.45rem;
+    border-radius: 99px;
+    background: var(--ground);
+    translate: -50% 0;
+  }
+
+  .face img {
     width: 100%;
-    aspect-ratio: 4 / 4.6;
+    aspect-ratio: 1 / 1.05;
+    border-radius: 10px;
     object-fit: cover;
     object-position: 50% 20%;
+    pointer-events: none;
   }
 
-  .vinyl {
-    padding: 0.85rem 0.6rem 1rem;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: clamp(1rem, 1.6vw, 1.12rem);
-    line-height: 1.25;
-    text-align: center;
-    transform: rotate(-2deg);
+  .badge-name {
+    margin-top: 0.4rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
   }
 
-  .driver :global(.decal) {
-    position: absolute;
-    top: -1.3rem;
-    right: -1.1rem;
-    color: var(--clover);
-    transform: rotate(14deg);
-    filter: drop-shadow(0 4px 6px rgb(0 0 0 / 0.3));
+  .badge-role { font-size: 0.78rem; opacity: 0.8; }
+
+  .barcode {
+    width: 5rem;
+    height: 1.7rem;
+    margin-top: auto;
+    background: repeating-linear-gradient(90deg, #fff 0 2px, transparent 2px 4px, #fff 4px 5px, transparent 5px 8px);
+  }
+
+
+  @keyframes badge-drop {
+    from { translate: 0 -600px; opacity: 0; }
+    to { translate: 0 0; opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .badge-swing { animation: none; }
   }
 
   /* The livery band: roles painted on like bus slogans. */
@@ -174,7 +283,51 @@ const titles = titlesOf(projects);
     list-style: none;
   }
 
+  /* The roles scroll past like a moving bus; hovering stops it so a link can be clicked. */
+  .marquee {
+    display: flex;
+    width: max-content;
+    animation: marquee 38s linear infinite;
+  }
+
+  .band {
+    overflow: hidden;
+  }
+
+  .band:hover .marquee,
+  .band:focus-within .marquee {
+    animation-play-state: paused;
+  }
+
+  .marquee .slogans {
+    flex-wrap: nowrap;
+    padding-inline: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
+
+  /* Reduced motion: one still list that wraps. */
+  @media (prefers-reduced-motion: reduce) {
+    .marquee {
+      width: min(100% - 2 * var(--gutter), 1160px);
+      margin-inline: auto;
+      animation: none;
+    }
+
+    .marquee .slogans {
+      flex-wrap: wrap;
+      padding-inline: 0;
+    }
+
+    .marquee .slogans[aria-hidden] {
+      display: none;
+    }
+  }
+
   .slogans li {
+    white-space: nowrap;
     display: inline-flex;
     align-items: center;
     gap: 0.65rem;
@@ -210,7 +363,7 @@ const titles = titlesOf(projects);
     }
 
     .copy,
-    .driver {
+    .badge-stage {
       width: min(100% - 2 * var(--gutter), 1160px);
       margin-inline: auto;
     }
@@ -224,17 +377,64 @@ const titles = titlesOf(projects);
       order: 2;
     }
 
-    .driver {
-      order: 3;
-      width: min(100% - 2 * var(--gutter), 17rem);
-      margin: 2.75rem auto 0.5rem var(--gutter);
+    .badge-stage {
+      order: 0;
     }
 
     .slogans {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.45rem;
       padding-block: 1rem;
     }
   }
 </style>
+
+<script>
+  // A pendulum: the badge keeps swinging left and right from the top of the strap. A tap knocks it back the other
+  // way; it can also be dragged and let go.
+  const swing = document.querySelector<HTMLElement>('.badge-swing');
+  const badge = document.querySelector<HTMLButtonElement>('.badge');
+  if (swing && badge && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const reach = 10; // degrees either side it keeps swinging to
+    let angle = 0;
+    let speed = 0;
+    let dragging = false;
+    let startX = 0;
+    let moved = false;
+    setTimeout(() => (speed = 1.2), 650);
+
+    const tick = () => {
+      if (!dragging) {
+        speed += -angle * 0.01; // pull back to centre
+        // Top up the swing when it shrinks below its reach, let it die down when a tap or drag overdid it.
+        const energy = Math.hypot(angle, speed / 0.1);
+        speed *= energy < reach ? 1.004 : 0.99;
+        angle += speed;
+      }
+      swing.style.setProperty('--swing', `${angle.toFixed(2)}deg`);
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    badge.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      moved = false;
+      startX = e.clientX;
+      badge.setPointerCapture(e.pointerId);
+    });
+    badge.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      if (!moved) return;
+      const next = Math.max(-35, Math.min(35, -dx * 0.18));
+      speed = next - angle;
+      angle = next;
+    });
+    const release = () => (dragging = false);
+    badge.addEventListener('pointerup', release);
+    badge.addEventListener('pointercancel', release);
+    badge.addEventListener('click', () => {
+      if (moved) return;
+      speed = -Math.sign(speed || 1) * 3.2; // knocked back the way it came
+    });
+  }
+</script>
