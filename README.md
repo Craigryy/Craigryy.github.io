@@ -82,6 +82,20 @@ npm run build      # the finished site, in dist/
 npm run preview    # serve dist/ to check it
 ```
 
+## Second address on Cloudflare Pages
+
+Every deploy also publishes the same build to Cloudflare Pages at **https://craigryy.pages.dev**, for networks that
+can't reach GitHub Pages. It turns on once the repo has two secrets (Settings → Secrets and variables → Actions →
+New repository secret):
+
+1. `CLOUDFLARE_ACCOUNT_ID`: on the right of the Cloudflare dashboard's home page (Account ID).
+2. `CLOUDFLARE_API_TOKEN`: dash.cloudflare.com → My Profile → API Tokens → Create Token → Custom token, permission
+   **Account → Cloudflare Pages → Edit**.
+
+Then Actions → Deploy to GitHub Pages and Cloudflare Pages → **Run workflow**. The first run creates the project. If the
+name `craigryy` is already taken on pages.dev, Cloudflare adds a few letters to it; the run's log shows the address.
+Links and what Google sees still point at the main address, so the two copies don't compete in search.
+
 ## Use your own domain
 
 When you buy a domain (e.g. `harrisonjames.dev`):
@@ -92,8 +106,8 @@ When you buy a domain (e.g. `harrisonjames.dev`):
    `CNAME` record pointing to `craigryy.github.io`.
 2. **GitHub:** this repo → Settings → **Pages** → Custom domain → type the domain → Save. Wait for the DNS check to
    pass (minutes to a few hours), then tick **Enforce HTTPS**.
-3. **Rebuild:** Actions → Deploy to GitHub Pages → **Run workflow**. The workflow reads the new address from the Pages
-   settings, so links, the sitemap and what Google sees all switch to the domain. No code change.
+3. **Rebuild:** Actions → Deploy to GitHub Pages and Cloudflare Pages → **Run workflow**. The workflow reads the new
+   address from the Pages settings, so links, the sitemap and what Google sees all switch to the domain. No code change.
 4. Recommended: GitHub → your Settings → **Pages** → Add a verified domain, so nobody else can point a site at it.
 
 `craigryy.github.io` keeps working and forwards visitors to the new domain.
@@ -116,7 +130,7 @@ GitHub Pages only serves files; it can't send email. [Web3Forms](https://web3for
    is meant to be public.
 2. This repo → Settings → Secrets and variables → Actions → **Variables** → New repository variable: name
    `WEB3FORMS_KEY`, value = the key.
-3. Actions → Deploy to GitHub Pages → Run workflow.
+3. Actions → Deploy to GitHub Pages and Cloudflare Pages → Run workflow.
 
 Without the key, the Contact section shows "Email me" and LinkedIn buttons instead of a form. For local testing,
 copy `.env.example` to `.env` and fill in `PUBLIC_WEB3FORMS_KEY`. `.env` is never committed.
