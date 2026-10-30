@@ -80,12 +80,21 @@ const schema = graph(
         if (!next) return;
         const covered = card.getBoundingClientRect().bottom - next.getBoundingClientRect().top;
         const p = Math.max(0, Math.min(1, covered / card.offsetHeight));
-        card.style.setProperty('--shrink', String(1 - p * 0.06));
-        card.style.setProperty('--dim', String(1 - p * 0.35));
+        card.style.setProperty('--shrink', (1 - p * 0.06).toFixed(3));
+        card.style.setProperty('--dim', (p * 0.35).toFixed(3));
       });
     };
-    addEventListener('scroll', update, { passive: true });
-    addEventListener('resize', update);
+    let queued = false;
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => {
+        queued = false;
+        update();
+      });
+    };
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', onScroll);
     update();
   }
 </script>
@@ -107,7 +116,18 @@ const schema = graph(
     top: calc(5.5rem + var(--n) * 1.1rem);
     transform-origin: 50% 0;
     scale: var(--shrink, 1);
-    filter: brightness(var(--dim, 1));
+    will-change: scale;
+  }
+
+  /* A dark veil instead of a brightness filter: fading its opacity costs nothing, a filter repaints the whole card. */
+  .featured > li::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 28px;
+    background: #000;
+    opacity: var(--dim, 0);
+    pointer-events: none;
   }
 
   .featured :global(.stop),

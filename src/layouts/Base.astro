@@ -4,7 +4,6 @@ import { Font } from 'astro:assets';
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-import Motion from '../components/Motion.astro';
 import profile from '../data/profile.json';
 import { url, absolute } from '../lib/url.js';
 
@@ -69,7 +68,6 @@ const jsonLd = schema && JSON.stringify(schema).replace(/</g, '\\u003c');
         if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
       })();
     </script>
-    <Motion />
     {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
   </head>
   <body>
