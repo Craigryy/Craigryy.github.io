@@ -1,6 +1,12 @@
 {
   "name": "Harrison James",
-  "fullName": "James Harrison Onoriode",
+  "fullName": "Harrison Onoriode James",
+  "otherNames": [
+    "Harrison James",
+    "Harrison Craigry James",
+    "Craigry James",
+    "James Harrison Onoriode"
+  ],
   "role": "Backend engineer",
   "intro": "I build web products with Python, Django and PostgreSQL: payments, APIs, background jobs and the tests that keep them working. I ship them with Docker to DigitalOcean and AWS, and build the front end in React or Next.js when a project needs one. 3 years of turning ideas into products people use.",
   "location": {
@@ -36,6 +42,11 @@
       "network": "instagram",
       "label": "Instagram",
       "url": "https://www.instagram.com/yeaitsjamess/"
+    },
+    {
+      "network": "facebook",
+      "label": "Facebook",
+      "url": "https://www.facebook.com/CraigryJames"
     }
   ],
   "anime": {
@@ -43,8 +54,8 @@
     "art": []
   },
   "seo": {
-    "title": "Harrison James · Backend Engineer (Python, Django) in Lagos, Nigeria",
-    "description": "Harrison James, backend engineer in Lagos, Nigeria: Python, Django, PostgreSQL. Co-founder and lead developer of Kinomos, lead developer of SeeBlu. Open to remote roles.",
+    "title": "Harrison Onoriode James · Backend Engineer (Python, Django) in Lagos, Nigeria",
+    "description": "Harrison Onoriode James (Harrison James), backend engineer in Lagos, Nigeria: Python, Django, PostgreSQL. Co-founder and lead developer of Kinomos, lead developer of SeeBlu. Open to remote roles.",
     "keywords": [
       "web developer in Nigeria",
       "web developer in Lagos",

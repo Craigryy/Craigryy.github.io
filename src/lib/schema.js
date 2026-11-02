@@ -23,8 +23,11 @@ export async function person() {
   return {
     '@type': 'Person',
     '@id': personId(),
-    name: profile.name,
-    alternateName: [profile.fullName].filter(Boolean),
+    // The full name is the one Google should show; the short name and nicknames tie the other profiles to it.
+    name: profile.fullName || profile.name,
+    alternateName: [...new Set([profile.name, ...(profile.otherNames || [])])].filter(
+      (name) => name && name !== (profile.fullName || profile.name),
+    ),
     jobTitle: profile.role,
     description: profile.seo.description,
     url: absolute(),

@@ -112,7 +112,8 @@ collections:
         file: src/data/profile.json
         fields:
           - { label: Name, name: name, widget: string }
-          - { label: Full name, name: fullName, widget: string, required: false, hint: Shown on the About page and given to Google as another name. }
+          - { label: Full name, name: fullName, widget: string, required: false, hint: Shown on the About page and given to Google as your main name. Use it exactly the same on LinkedIn and Facebook. }
+          - { label: Other names, name: otherNames, widget: list, required: false, hint: 'Names and nicknames people know you by, e.g. "Harrison James". Google uses them to link your other profiles to you.' }
           - { label: Job title, name: role, widget: string, hint: 'e.g. "Full-stack web developer". Used in the hero and in Google results.' }
           - { label: Introduction, name: intro, widget: text, hint: The paragraph under your name. }
           - label: Location
