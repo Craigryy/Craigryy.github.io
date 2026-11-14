@@ -21,7 +21,7 @@ const offDuty = ['God lover', 'Anime', 'Football'];
 <section class="hero" data-stop="home" aria-labelledby="hero-title">
   <div class="container body">
     <div class="copy">
-      <h1 id="hero-title" class="paint">{profile.name}</h1>
+      <h1 id="hero-title" class="paint">{(profile.displayName || profile.name)}</h1>
       <p class="role">{profile.role}.</p>
       <p class="intro">{profile.intro}</p>
       <div class="calls">
@@ -49,7 +49,7 @@ const offDuty = ['God lover', 'Anime', 'Football'];
           <span class="face front">
             <span class="slot" aria-hidden="true"></span>
             <Image src={photo} alt={`${profile.name}`} widths={[320, 480, 720]} sizes="(max-width: 860px) 80vw, 416px" loading="eager" fetchpriority="high" />
-            <span class="badge-name">{profile.name}</span>
+            <span class="badge-name">{(profile.displayName || profile.name)}</span>
             <span class="badge-role">{profile.role} · {profile.location.city}</span>
             <span class="barcode" aria-hidden="true"></span>
           </span>
@@ -58,7 +58,7 @@ const offDuty = ['God lover', 'Anime', 'Football'];
             <span class="off-duty">
               {offDuty.map((item, i) => <span class:list={{ lit: i % 2 === 1 }}>{item}</span>)}
             </span>
-            <span class="badge-role">{profile.name}</span>
+            <span class="badge-role">{(profile.displayName || profile.name)}</span>
             <span class="barcode"></span>
           </span>
         </button>

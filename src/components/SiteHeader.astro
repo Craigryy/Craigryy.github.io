@@ -19,9 +19,9 @@ const stops = [
 ---
 <header class="route-board">
   <div class="container bar">
-    <a class="plate" href={url()} aria-label={`${profile.name}, home`}>
+    <a class="plate" href={url()} aria-label={`${(profile.displayName || profile.name)}, home`}>
       <Clover size="1.55rem" />
-      <span class="plate-name">{profile.name}</span>
+      <span class="plate-name">{(profile.displayName || profile.name)}</span>
     </a>
 
     <nav class="stops" aria-label="Main">

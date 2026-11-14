@@ -10,7 +10,7 @@ const { heading, text, links = [] } = Astro.props;
 <main class="error">
   <a class="brand" href={url()}>
     <Clover size="1.4rem" />
-    <span class="paint-plain">{profile.name}</span>
+    <span class="paint-plain">{(profile.displayName || profile.name)}</span>
   </a>
   <div class="sign">
     <Clover class="decal" size="4.5rem" outline />
