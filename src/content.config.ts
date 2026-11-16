@@ -27,6 +27,11 @@ const projects = defineCollection({
       // More screenshots (desktop, phone…), shown on the project's own page.
       gallery: z.array(z.object({ image: image(), caption: optionalText })).default([]),
       stack: z.array(z.string()).default([]),
+      // What the client said, shown as a quote under the write-up.
+      review: z.preprocess(
+        (value) => (value && typeof value === 'object' && !(value as { quote?: string }).quote ? undefined : value),
+        z.object({ quote: z.string(), name: z.string(), role: optionalText }).optional(),
+      ),
       featured: z.boolean().default(false), // big card at the top
       order: z.number().default(100), // smaller numbers show first
       draft: z.boolean().default(false), // hidden from the site

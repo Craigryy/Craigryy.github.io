@@ -19,6 +19,10 @@ stack:
   - Ansible
   - Cloudflare
   - DigitalOcean
+review:
+  quote: You really did an excellent job. I’m so happy.
+  name: Daniel
+  role: Owner, AcctTechs
 featured: true
 order: 3
 draft: false

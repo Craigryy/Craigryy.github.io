@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, tagline, role, year, period, url, repo, image, alt, stack, gallery } = project.data;
+const { title, tagline, role, year, period, url, repo, image, alt, stack, gallery, review } = project.data;
 const roleText = roleLabel(role) && titleOf(project);
 
 // Link previews (WhatsApp, LinkedIn, X) and Google get a 1200×630 crop of the screenshot.
@@ -92,6 +92,12 @@ const schema = graph(
         <div class="prose">
           <Content />
         </div>
+        {review && (
+          <figure class="review">
+            <blockquote><p>{review.quote}</p></blockquote>
+            <figcaption><strong>{review.name}</strong>{review.role && <span>, {review.role}</span>}</figcaption>
+          </figure>
+        )}
       </div>
     </div>
 
@@ -244,6 +250,38 @@ const schema = graph(
 
   .writeup {
     padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.25rem, 4vw, 2.75rem);
+  }
+
+  .review {
+    margin: clamp(1.75rem, 4vw, 2.5rem) 0 0;
+    padding: 1.25rem 1.4rem;
+    border-left: 4px solid var(--band);
+    border-radius: 0 14px 14px 0;
+    background: color-mix(in srgb, var(--band) 7%, transparent);
+  }
+
+  .review blockquote {
+    margin: 0;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    font-weight: 600;
+    line-height: 1.45;
+  }
+
+  .review blockquote p::before {
+    content: '\201C';
+  }
+
+  .review blockquote p::after {
+    content: '\201D';
+  }
+
+  .review figcaption {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .review figcaption::before {
+    content: '\2014\00a0';
   }
 
   /* Screenshots side by side at the same height: each one's width follows its shape (flex grow = width / height). */

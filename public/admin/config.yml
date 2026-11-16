@@ -90,6 +90,16 @@ collections:
         widget: list
         required: false
         hint: One technology per item, most important first. Cards show the first few.
+      - label: Client review
+        name: review
+        widget: object
+        required: false
+        collapsed: true
+        hint: What the client said about the work, with their permission. Leave the quote empty to show none.
+        fields:
+          - { label: Quote, name: quote, widget: text, required: false }
+          - { label: Name, name: name, widget: string, required: false }
+          - { label: Their role, name: role, widget: string, required: false, hint: e.g. Owner, AcctTechs }
       - { label: Big card at the top, name: featured, widget: boolean, default: false, required: false }
       - label: Order
         name: order
