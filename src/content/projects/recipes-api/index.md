@@ -12,7 +12,6 @@ stack:
   - EFS
   - GitHub Actions
 order: 5
-draft: true
 ---
 
 A containerised Django REST service, with the AWS infrastructure behind it written as code.
