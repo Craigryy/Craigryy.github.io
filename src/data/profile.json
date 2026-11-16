@@ -9,7 +9,7 @@
     "James Harrison Onoriode"
   ],
   "role": "Backend engineer",
-  "intro": "I build web products with Python, Django and PostgreSQL: payments, APIs, background jobs and the tests that keep them working. I ship them with Docker to DigitalOcean and AWS, and build the front end in React or Next.js when a project needs one. 3 years of turning ideas into products people use.",
+  "intro": "I build web products with Python, Django and PostgreSQL: payments, APIs, background jobs and the tests that keep them working. I ship them with Docker to DigitalOcean and Cloudflare, and build the front end in React or Next.js when a project needs one. 3 years of turning ideas into products people use.",
   "location": {
     "area": "Festac Town",
     "city": "Lagos",
