@@ -41,8 +41,6 @@ I'm the lead developer. I built it from the first design mockups to the live sit
   signed and verified, so an order is only marked paid when the money has really arrived.
 - **Instant delivery.** As soon as a payment is confirmed, the order is delivered on screen and by email.
 - **Encrypted stock.** What's for sale is stored encrypted, so a copy of the database alone gives nothing away.
-- **Two kinds of admin.** The store manager runs products, stock and orders. Only I can change staff and
-  permissions.
 - **Email that arrives**, sent from the store's own domain through ZeptoMail.
 
 ## How it runs
