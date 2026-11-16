@@ -19,6 +19,7 @@ const projects = defineCollection({
       tagline: z.string(),
       role: optionalText, // "Founder", "Creator"… shown as "Founder of SeeBlu"
       year: z.number().int(),
+      period: optionalText, // e.g. "Nov 2026 – Present", shown instead of the year when set
       url: optionalUrl, // the live site
       repo: optionalUrl, // the source code
       image: z.preprocess(blank, image().optional()), // the screenshot, next to index.md

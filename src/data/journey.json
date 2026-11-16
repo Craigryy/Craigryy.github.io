@@ -1,6 +1,16 @@
 {
   "experience": [
     {
+      "role": "Lead Developer",
+      "org": "AcctTechs",
+      "place": "Remote",
+      "period": "Nov 2026 – Present",
+      "points": [
+        "Built accttechs.com, an online store for digital accounts, from the design mockups to the live site: Django, Wagtail and PostgreSQL, with Kora payments in naira and instant delivery after payment.",
+        "Run the servers as code (Terraform and Ansible on DigitalOcean) and keep payments strict: server-side checks, signed notifications, encrypted stock."
+      ]
+    },
+    {
       "role": "Freelance web developer",
       "org": "Self-employed",
       "place": "Remote",

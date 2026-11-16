@@ -53,6 +53,7 @@ collections:
         required: false
         hint: e.g. Founder, Creator, Lead developer. Shown as "Founder of SeeBlu" under your name and on the card. Leave empty for side projects.
       - { label: Year, name: year, widget: number, value_type: int, min: 2000, max: 2100 }
+      - { label: Period, name: period, widget: string, required: false, hint: 'e.g. Nov 2026 – Present. Shown instead of the year when filled in.' }
       - label: Live site
         name: url
         widget: string

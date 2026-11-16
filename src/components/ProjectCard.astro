@@ -8,7 +8,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { projectUrl, coverName, titleOf, roleLabel } from '../lib/projects.js';
 
 const { project, flip = false, eager = false } = Astro.props;
-const { title, tagline, role, year, url, repo, image, alt, stack } = project.data;
+const { title, tagline, role, year, period, url, repo, image, alt, stack } = project.data;
 const href = projectUrl(project);
 const shown = 6;
 ---
@@ -30,7 +30,7 @@ const shown = 6;
   <div class="board sign">
     <h3 class="paint-plain"><a href={href}>{title}</a></h3>
     <p class="strip board-caps">
-      <time class="nums" datetime={String(year)}>{year}</time>
+      <time class="nums" datetime={String(year)}>{period || year}</time>
       {roleLabel(role) && <span>{titleOf(project)}</span>}
     </p>
     <p class="tagline">{tagline}</p>

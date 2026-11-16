@@ -22,7 +22,7 @@ stack:
   - Bootstrap
   - JavaScript
 featured: true
-order: 3
+order: 4
 ---
 
 A Christian publishing site, built and run by a team of two. I'm one of its two developers: I've designed pages, built

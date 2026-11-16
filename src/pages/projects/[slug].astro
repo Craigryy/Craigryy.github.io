@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, tagline, role, year, url, repo, image, alt, stack, gallery } = project.data;
+const { title, tagline, role, year, period, url, repo, image, alt, stack, gallery } = project.data;
 const roleText = roleLabel(role) && titleOf(project);
 
 // Link previews (WhatsApp, LinkedIn, X) and Google get a 1200×630 crop of the screenshot.
@@ -44,7 +44,7 @@ const schema = graph(
       </nav>
       <h1 class="paint">{title}</h1>
       <p class="strip board-caps">
-        <time class="nums" datetime={String(year)}>{year}</time>
+        <time class="nums" datetime={String(year)}>{period || year}</time>
         {roleText && <span>{roleText}</span>}
       </p>
       <p class="tagline">{tagline}</p>
@@ -69,7 +69,7 @@ const schema = graph(
     <div class="container body">
       <aside class="facts" aria-label="Project facts">
         <dl class="board">
-          <div><dt class="board-caps">Year</dt><dd class="nums">{year}</dd></div>
+          <div><dt class="board-caps">{period ? 'When' : 'Year'}</dt><dd class="nums">{period || year}</dd></div>
           {roleLabel(role) && <div><dt class="board-caps">My role</dt><dd>{roleLabel(role)}</dd></div>}
           {stack.length > 0 && (
             <div>
