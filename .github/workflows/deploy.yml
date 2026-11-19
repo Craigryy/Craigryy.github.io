@@ -1,5 +1,5 @@
 # Builds the Astro site and publishes it on GitHub Pages on every push to main (including saves from the admin page),
-# and the same build on Cloudflare Pages (craigryy.pages.dev) as a second address for when GitHub Pages can't be reached.
+# and the same build on Cloudflare Pages (craigdigital.pages.dev) as a second address for when GitHub Pages can't be reached.
 # Pages source must be "GitHub Actions" (Settings → Pages), which is already set for this repo.
 name: Deploy to GitHub Pages and Cloudflare Pages
 
@@ -68,14 +68,14 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages project create craigryy --production-branch=main
+          command: pages project create craigdigital --production-branch=main
       - name: Deploy to Cloudflare Pages
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=craigryy --branch=main
+          command: pages deploy dist --project-name=craigdigital --branch=main
       - name: Waiting for Cloudflare secrets
         if: env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == ''
         run: echo "::notice::Cloudflare Pages skipped. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repo secrets to turn it on."

@@ -84,7 +84,7 @@ npm run preview    # serve dist/ to check it
 
 ## Second address on Cloudflare Pages
 
-Every deploy also publishes the same build to Cloudflare Pages at **https://craigryy.pages.dev**, for networks that
+Every deploy also publishes the same build to Cloudflare Pages at **https://craigdigital.pages.dev**, for networks that
 can't reach GitHub Pages. It turns on once the repo has two secrets (Settings → Secrets and variables → Actions →
 New repository secret):
 
@@ -93,7 +93,7 @@ New repository secret):
    **Account → Cloudflare Pages → Edit**.
 
 Then Actions → Deploy to GitHub Pages and Cloudflare Pages → **Run workflow**. The first run creates the project. If the
-name `craigryy` is already taken on pages.dev, Cloudflare adds a few letters to it; the run's log shows the address.
+name `craigdigital` is already taken on pages.dev, Cloudflare adds a few letters to it; the run's log shows the address.
 Links and what Google sees still point at the main address, so the two copies don't compete in search.
 
 ## Use your own domain
