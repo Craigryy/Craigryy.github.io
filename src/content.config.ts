@@ -24,6 +24,7 @@ const projects = defineCollection({
       repo: optionalUrl, // the source code
       image: z.preprocess(blank, image().optional()), // the screenshot, next to index.md
       alt: optionalText,
+      video: optionalText, // a phone screen recording in public/ (e.g. work/app.mp4), with a poster of the same name as .jpg
       // More screenshots (desktop, phone…), shown on the project's own page.
       gallery: z.array(z.object({ image: image(), caption: optionalText })).default([]),
       stack: z.array(z.string()).default([]),

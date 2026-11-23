@@ -21,7 +21,7 @@ export async function getStaticPaths() {
 
 const { project, next } = Astro.props;
 const { Content } = await render(project);
-const { title, tagline, role, year, period, url, repo, image, alt, stack, gallery, review } = project.data;
+const { title, tagline, role, year, period, url, repo, image, alt, video, stack, gallery, review } = project.data;
 const roleText = roleLabel(role) && titleOf(project);
 
 // Link previews (WhatsApp, LinkedIn, X) and Google get a 1200×630 crop of the screenshot.
@@ -65,6 +65,24 @@ const schema = graph(
         )}
       </figure>
     </div>
+
+    {video && (
+      <section class="container demo" aria-labelledby="demo-title">
+        <h2 id="demo-title" class="paint">On a phone</h2>
+        <div class="phone">
+          <video
+            src={siteUrl(video)}
+            poster={siteUrl(video.replace(/\.mp4$/, '.jpg'))}
+            muted
+            loop
+            playsinline
+            controls
+            preload="metadata"
+            aria-label={`${title} on a phone`}
+          ></video>
+        </div>
+      </section>
+    )}
 
     <div class="container body">
       <aside class="facts" aria-label="Project facts">
@@ -185,6 +203,28 @@ const schema = graph(
 
   .cover img {
     border-radius: 15px;
+  }
+
+  .demo {
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .phone {
+    width: min(100%, 19rem);
+    margin: 1.4rem auto 0;
+    padding: 0.6rem;
+    border-radius: 2.4rem;
+    background: var(--window, #1d1c1e);
+    box-shadow: 0 24px 40px -22px rgb(0 0 0 / 0.55), inset 0 0 0 2px rgb(255 255 255 / 0.08);
+  }
+
+  .phone video {
+    display: block;
+    width: 100%;
+    max-height: 72vh;
+    object-fit: contain;
+    border-radius: 1.8rem;
+    background: #000;
   }
 
   .no-shot {
