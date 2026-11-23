@@ -1,11 +1,25 @@
 ---
 title: Tressa Hair
 tagline: "A mobile-first hair store with a texture finder, shoppable reels and ordering over WhatsApp"
-role: designer and developer
+role: developer
 year: 2026
 image: cover.png
 alt: "Three phone screens of the Tressa Hair store: the reels section, the shop header and a story."
 video: work/hair.mp4
+stack:
+  - Django
+  - Wagtail
+  - PostgreSQL
+  - Tailwind CSS
+  - Kora
+  - Zoho Mail
+  - ZeptoMail
+  - Nginx
+  - Docker Compose
+  - Terraform
+  - Ansible
+  - Cloudflare
+  - DigitalOcean
 featured: true
 order: 5
 draft: false

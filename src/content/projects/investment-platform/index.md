@@ -1,11 +1,25 @@
 ---
 title: Investment Platform
 tagline: "A trading and investing app with US dollar deposits, live markets and investment plans"
-role: designer and developer
+role: developer
 year: 2026
 image: cover.png
 alt: "Three phone screens of the investment platform: the landing page, the dashboard and the deposit screen."
 video: work/investment.mp4
+stack:
+  - Django
+  - Wagtail
+  - PostgreSQL
+  - Tailwind CSS
+  - Kora
+  - Zoho Mail
+  - ZeptoMail
+  - Nginx
+  - Docker Compose
+  - Terraform
+  - Ansible
+  - Cloudflare
+  - DigitalOcean
 featured: true
 order: 7
 draft: false

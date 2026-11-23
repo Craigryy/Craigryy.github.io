@@ -1,11 +1,25 @@
 ---
 title: Owodex
 tagline: "A gift card exchange for Nigeria: sell cards for naira, or buy them from brands you love"
-role: designer and developer
+role: developer
 year: 2026
 image: cover.png
 alt: "Three phone screens of Owodex: the Sell Gift Cards hero, the popular brands list and the closing banner."
 video: work/giftcard.mp4
+stack:
+  - Django
+  - Wagtail
+  - PostgreSQL
+  - Tailwind CSS
+  - Kora
+  - Zoho Mail
+  - ZeptoMail
+  - Nginx
+  - Docker Compose
+  - Terraform
+  - Ansible
+  - Cloudflare
+  - DigitalOcean
 featured: true
 order: 6
 draft: false
